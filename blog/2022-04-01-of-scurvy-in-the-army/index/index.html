@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        
+            <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Of Scurvy in the Army - Jonas Schropp
+</title>
+
+
+
+            <meta property="og:title" content="Of Scurvy in the Army - Jonas Schropp" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content=""/>
+<meta property="og:url" content="http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/index/"/>
+<meta property="og:site_name" content="Jonas Schropp"/>
+
+
+
+
+
+
+
+            
+<link rel="shortcut icon" href="http://jonas-schropp.github.io/img/fav.ico.png">
+
+
+            
+
+
+  
+  
+  
+  <link rel="stylesheet" href="http://jonas-schropp.github.io/css/main.min.9be191ad8f911b41ea78d24eeb41bac3c819932c75b8ceb4d91313cfb74e6c73.css" integrity="sha256-m&#43;GRrY&#43;RG0HqeNJO60G6w8gZkyx1uM602RMTz7dObHM=" crossorigin="anonymous" media="screen">
+
+
+
+
+    <link rel="stylesheet" href="http://jonas-schropp.github.io/css/syntax.css" integrity="" crossorigin="anonymous" media="screen">
+    <link rel="stylesheet" href="http://jonas-schropp.github.io/css/custom-style.css" integrity="" crossorigin="anonymous" media="screen">
+        
+        
+        
+        
+    </head>
+    <body> 
+        <section id="top" class="section">
+            
+            <div class="container hero  fade-in one " style="background-image: url(/img/logo.png);">
+                
+                
+
+<h1 class="bold-title is-1">Projects &amp; Ideas</h1>
+
+
+            </div>
+            
+            <div class="section  fade-in two ">
+                
+<div class="container">
+    <hr>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu " id="navMenu">
+            
+            
+                
+                    
+                        <a class="navbar-item" href="http://jonas-schropp.github.io/">
+                            
+                            Home
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="http://jonas-schropp.github.io/about">
+                            
+                            About
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="http://jonas-schropp.github.io/hire-me">
+                            
+                            Hire Me!
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="http://jonas-schropp.github.io/blog">
+                            
+                            Projects &amp; Ideas
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="http://jonas-schropp.github.io/#contact">
+                            
+                            Contact
+                            
+                        </a>
+                    
+                
+            
+        </div>
+    </nav>
+    <hr>
+</div>
+
+
+
+                
+<div class="container">
+    <h2 class="title is-1 top-pad strong-post-title">
+        <a href="http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/index/">Of Scurvy in the Army</a>
+    </h2>
+    <div class="post-data">
+        Apr 12, 2022 |
+        17 minutes read
+    </div>
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+      
+     <p>
+         Tags: 
+          
+           <a href="http://jonas-schropp.github.io/tags/r">
+             R</a>,
+         
+           <a href="http://jonas-schropp.github.io/tags/ggplot2">
+             ggplot2</a>,
+         
+           <a href="http://jonas-schropp.github.io/tags/rose-chart">
+             rose chart</a>
+         
+        </p>
+      
+    
+      
+    
+</div>
+
+<div class="container markdown top-pad">
+     
+
+<script src="http://jonas-schropp.github.io/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction-or-the-war-in-crimea" class="section level1">
+<h1>Introduction or The War in Crimea</h1>
+<p>It feels quite weird to start blogging. I don’t use Instagram, Twitter, Facebook or Tiktok. I like to turn my phone silent during the day. I don’t particularly enjoy advertising myself online, but I’ve learned a lot by reading hundreds (if not thousands) of blog posts over the years and this seems like the best way to share my own thoughts and ideas. In long form rather than 140 characters. <br></p>
+<p>This being my first post, it seems only fitting to share how I made the logo for the website. Let me take you on a wild ride through history, healthcare and the pitfalls of data visualization with R. <br></p>
+<p>In July 1853 czar Nicholas I tried to expand Russian territories against a declining Ottoman empire. Russia quickly occupied the Danubian Principalities of Moldavia and Wallachia in modern day Romania and war expanded all throughout the Black Sea and its western shores. Fearing an Ottoman collapse, the British and the French ordered their fleets to enter the Black Sea in January 1854. Soon after the Austrian empire entered the war and started pushing back the Russian forces from the west. The czar and his generals had underestimated the unity of the west. <br></p>
+<p>Conditions on the front lines were harsh. On top of the constant dangers of armed conflict, food rations were small, support and medical staff were underrepresented and overworked, hygiene standards were basically non-existent. Mass infections were common and medicines to treat them were constantly in short supply. This, however, was the reality of nearly every war at the time. It took Florence Nightingale and her <em>Diagram of the Causes of Mortality in the Army of the East</em> to completely change the standard of care and reduce the death rate in the British troops from 42% to 2%. Her findings would have far-reaching implications not only during the Crimean War, but for hospital care around the world and until this day. <br></p>
+<p>Nightingale and her staff of 38 volunteer nurses reached Istanbul in November 1854 to treat wounded soldiers who had been sent there over 500 km away in the Crimea. During her first winter there she noticed that out of the 4077 patients who died, more than 90% died of avoidable illnesses such as typhus, typhoid, cholera, and dysentery. In February 1855 Nightingale sent <a href="https://www.nationalarchives.gov.uk/battles/crimea/popup/medical.htm">a report</a> to the London newspaper <em>The Times</em>, lamenting conditions at the camp. As a response to her report a prefabricated hospital was shipped from England to the Dardanelles, the sewers were flushed out and ventilation was improved, greatly reducing death rates over the following years.</p>
+</div>
+<div id="the-rose" class="section level1">
+<h1>The Rose</h1>
+<p>These extraordinary achievements, however, might have been largely forgotten had Nightingale not published her book <em>Notes on matters affecting the health, efficiency, and hospital administration of the British Army</em> less than four years later, which can be read in full on <em>archive.org</em>:</p>
+<p align="center">
+<iframe src="https://archive.org/embed/b20387118" width="840" height="576" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen>
+</iframe>
+</p>
+<p>In the years following, Nightingale would lobby heavily for public health legislation, which was in dire need. Half of all children in urban areas were dying before age 5. The average life span across Britain was at a mere 40 years, with some areas such as Liverpool even lower at only 26 years. 4 out of 10 deaths were from infectious diseases and therefore often avoidable. In 1875, finally, her efforts were rewarded with the <em>Public Health Act</em>, which subsequently improved the average life span to over 60 years. <br></p>
+<p>Much of Nightingale’s success is often credited to the most famous diagram in her 1858 book, the <em>Diagram of the Causes of Mortality in the Army of the East</em>. It shows that the death rate from zygotic disease (largely avoidable infections) was not only higher than for any other cause, but also higher in the first year of the war, before improvements in sanitation were implemented. <br></p>
+<div class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/archive/1/17/20201105141904%21Nightingale-mortality.jpg" style="width:70.0%" alt="" />
+<p class="caption">Florence Nightingale’s beautiful ‘Diagram of the Causes of Mortality in the Army of the East’</p>
+</div>
+<p>The diagram consists of two main parts: on the right, the number of deaths at the camp in the first year of the war (April 1854 - March 1855), on the left the deaths during the following year (April 1855 - March 1856). In each of the graphs, causes of death are color coded, blue representing zymotic diseases, red wounds and injuries and black all other causes. The numbers for each month are presented in a circular fashion and area of each of the 12 slices – measured from the center – represents the numbers of deaths. The color coded areas are therefore overlapping. <br></p>
+<p>The circular fashion in which Nightingale presents the progression of each year as well as her mastery of color make the Rose visually appealing. The message is immediately clear as well: those blue areas are bigger than the red and black ones together, but they become smaller over time. In the following post I will show how to recreate Nightingale’s famous diagram using <em>R</em> with <em>ggplot2</em>. In the progress we will touch on several subjects, such as:</p>
+<ul>
+<li>changing the type of font used in your graphics (with extrafont)</li>
+<li>using patterns or textures rather than fill colors (with ggpattern)</li>
+<li>adding circular coordinate systems to your ggplot</li>
+<li>using html to customize text and label appearance in your graphics (with ggtext)</li>
+<li>removing annoying whitespace around your plots when <em>plot.margins</em> just won’t do</li>
+<li>and finally arranging several figures and images (with cowplot and patchwork)</li>
+</ul>
+</div>
+<div id="recreating-the-rose-in-r" class="section level1">
+<h1>Recreating the Rose in R</h1>
+<p>In order to recreate the diagram, I copied the data Nightingale published in her book <em>Notes on matters affecting the health…</em> into a csv file named <em>TableNo2.csv</em>. You can find the csv in this blog post’s github directory and use it however you please.</p>
+<pre class="r"><code>suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(extrafont))
+suppressPackageStartupMessages(library(cowplot))
+suppressPackageStartupMessages(library(ggpubr))
+suppressPackageStartupMessages(library(patchwork))
+suppressPackageStartupMessages(library(here))
+library(magrittr)
+library(ggplot2)
+library(ggpattern)
+library(geomtextpath)
+library(ggtext)
+library(jpeg)
+
+# Read in the data
+scurvy &lt;- readr::read_csv(&quot;TableNo2.csv&quot;, show_col_types = FALSE)
+knitr::kable(head(scurvy, 6))</code></pre>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="8%" />
+<col width="40%" />
+<col width="14%" />
+<col width="17%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Year</th>
+<th align="left">Month</th>
+<th align="right">Estimated Average Monthly Strength of the Army</th>
+<th align="right">Zymotic Diseases</th>
+<th align="right">Wounds and Injuries</th>
+<th align="right">All other Causes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">April</td>
+<td align="right">8571</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">May</td>
+<td align="right">23333</td>
+<td align="right">12</td>
+<td align="right">NA</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">June</td>
+<td align="right">28333</td>
+<td align="right">11</td>
+<td align="right">NA</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">July</td>
+<td align="right">28722</td>
+<td align="right">359</td>
+<td align="right">NA</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">August</td>
+<td align="right">30246</td>
+<td align="right">828</td>
+<td align="right">1</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">September</td>
+<td align="right">30290</td>
+<td align="right">788</td>
+<td align="right">81</td>
+<td align="right">70</td>
+</tr>
+</tbody>
+</table>
+<p><br>Because I copied the data just like it was presented in the book, it first needs to be transformed into long format before plotting. The new column <em>Cause of Death</em> is turned into a factor to have more control over how the colors are plotted later on.</p>
+<pre class="r"><code>scurvy %&lt;&gt;%
+  select(-`Estimated Average Monthly Strength of the Army`) %&gt;%   
+  tidyr::pivot_longer(
+    cols = c(&quot;Zymotic Diseases&quot;, &quot;Wounds and Injuries&quot;, &quot;All other Causes&quot;), 
+    names_to = &quot;Cause of Death&quot;
+    ) %&gt;%
+  mutate(
+    Month = factor(Month, levels = month.name, labels = month.name),
+    value = if_else(is.na(value), 0, value),
+    `Cause of Death` = factor(
+      `Cause of Death`, 
+      levels = c(&quot;Zymotic Diseases&quot;, &quot;Wounds and Injuries&quot;, &quot;All other Causes&quot;))
+    ) 
+
+knitr::kable(head(scurvy, 9))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Year</th>
+<th align="left">Month</th>
+<th align="left">Cause of Death</th>
+<th align="right">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">April</td>
+<td align="left">Zymotic Diseases</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">April</td>
+<td align="left">Wounds and Injuries</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">April</td>
+<td align="left">All other Causes</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">May</td>
+<td align="left">Zymotic Diseases</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">May</td>
+<td align="left">Wounds and Injuries</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">May</td>
+<td align="left">All other Causes</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">June</td>
+<td align="left">Zymotic Diseases</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">1854</td>
+<td align="left">June</td>
+<td align="left">Wounds and Injuries</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">1854</td>
+<td align="left">June</td>
+<td align="left">All other Causes</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>Now reading through Nightingale’s description, she used the area to scale the slices rather than the distance from the center. The easiest way to do this should be to transform the input data. The area of a circle sector is given by <span class="math inline">\(A=r^2 \alpha / 2\)</span>, where <span class="math inline">\(\alpha\)</span> is the angle (30 degrees in this case) and <span class="math inline">\(r\)</span> is the radius. That means we have to transform our <em>value</em> column such that <span class="math inline">\(r = \sqrt{2*value / 30}\)</span></p>
+<pre class="r"><code>scurvy %&lt;&gt;% mutate(r = sqrt(2*value / 30))</code></pre>
+<p><br>From a modern point of view, this might have been a bad choice: evaluating the area of overlapping pie slices seems error prone and can lead the reader to underestimate the true differences between the numbers. Nevertheless, the easiest way to implement this particular style of presentation is to transform the data before plotting.</p>
+<div id="april-1854-to-march-1855" class="section level2">
+<h2>1 April 1854 to March 1855</h2>
+<p>Because the graphic is split into two distinct parts, I start by only selecting the relevant months for the first plot.</p>
+<pre class="r"><code>scurvy1 &lt;- scurvy %&gt;%
+  filter(
+    Year == 1854 | Year == 1855 &amp; Month %in% c(&quot;January&quot;, &quot;February&quot;, &quot;March&quot;)
+    ) %&gt;%
+  arrange(Year, Month) %&gt;%
+  mutate(
+    tmp = as.factor(rep(1:12, each = 3)),
+    `Cause of Death` = factor(
+      `Cause of Death`, 
+      levels = c(&quot;All other Causes&quot;, &quot;Wounds and Injuries&quot;, &quot;Zymotic Diseases&quot;)
+      )
+    ) </code></pre>
+<p><br>Then, because the areas are overlapping, it is easiest to make three new data sets – one for each cause of death. This is also necessary because <em>geom_bar_pattern</em> appears to fail when trying to plot an area of 0 in combination with <em>coord_polar</em>.</p>
+<pre class="r"><code>scurvy1a &lt;- scurvy1 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(`Cause of Death` == &quot;Zymotic Diseases&quot;) %&gt;% 
+  ungroup()
+scurvy1b &lt;- scurvy1 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(`Cause of Death` == &quot;All other Causes&quot; &amp; r &gt; 0) %&gt;% 
+  ungroup()
+scurvy1c &lt;- scurvy1 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(`Cause of Death` == &quot;Wounds and Injuries&quot; &amp; r &gt; 0) %&gt;% 
+  ungroup()</code></pre>
+<p><br>In order to use background patterns that are true to Nightingale’s original work – which was drawn using crayons – three pictures need to be saved. Each one contains a representative area cut out from the original graphic that can be used to define the respective color. A vector containing the paths to each of the images is defined.</p>
+<pre class="r"><code>images &lt;- c(
+  &quot;color_death.jpg&quot;, &quot;color_zymotic.jpg&quot;, &quot;color_other.jpg&quot;
+)</code></pre>
+<p><img src="http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+<p>In the next step, a simple bar plot with with several important twists is created. Rather than <em>ggplot2::geom_bar</em>, we use <em>ggpattern::geom_bar_pattern</em>, which allows us to define the images above as the background fill color. We do this three times, because the areas of the differently colored causes of death are overlapping and this way we have full control over how they overlap This will become especially important for the second plot, where Nightingale apparently used different rules to determine what goes on top of what. By specifying <code>width = 1</code> we make sure that there is no space between bars.</p>
+<pre class="r"><code>p1 &lt;- scurvy1 %&gt;% 
+  filter(r &gt; 0) %&gt;%
+  ggplot() + 
+    geom_bar_pattern(
+      data = scurvy1a,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;,  
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1,    # to remove space between bars
+      size = 0.4
+      ) + 
+    geom_bar_pattern(
+      data = scurvy1b,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;,  
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1,    # to remove space between bars
+      size = 0.4
+      ) + 
+    geom_bar_pattern(
+      data = scurvy1c,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;, 
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1,    # to remove space between bars
+      size = 0.4
+      ) +
+  scale_pattern_filename_manual(
+    values = c(
+      &quot;Zymotic Diseases&quot; = &quot;color_zymotic.jpg&quot;, 
+      &quot;Wounds and Injuries&quot; = &quot;color_death.jpg&quot;, 
+      &quot;All other Causes&quot; = &quot;color_other.jpg&quot;)
+    )  +
+  scale_color_manual(
+    values = c(
+      &quot;Zymotic Diseases&quot; = &quot;#42514f&quot;, 
+      &quot;Wounds and Injuries&quot; = &quot;#ae7e79&quot;, 
+      &quot;All other Causes&quot; = &quot;black&quot;)
+    ) +
+  scale_y_continuous(limits = c(0, 14.25))
+
+p1</code></pre>
+<p><img src="http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-8-1.png" width="480" /></p>
+<p>Next, the labels are defined manually and allocated a height (variable <em>y</em>) above the bars.</p>
+<pre class="r"><code>labels &lt;- scurvy1a %&gt;% 
+  mutate(
+    label = c(
+      &quot;APRIL\n1854&quot;, &quot;MAY&quot;, &quot;JUNE&quot;, &quot;JULY&quot;, &quot;AUGUST&quot;, &quot;SEPTEMBER&quot;, &quot;OCTOBER&quot;, &quot;NOVEMBER&quot;, 
+      &quot;DECEMBER&quot;, &quot;JANUARY 1855&quot;, &quot;FEBRUARY&quot;, &quot;MARCH 1855&quot;
+      ),
+    y = if_else(
+      r &lt; 4, 3.8, r + 0.5
+    ),
+    `Cause of Death` = NA
+  )</code></pre>
+<p><br>We remove the legend, the axis labels and titles and add the custom annotation layer. In order to do this, we use <em>geom_textpath</em>, which makes it possible to curve the labels just like in the original. We also need to turn the labels on their head because otherwise their direction will be wrong later on.</p>
+<pre class="r"><code>p2 &lt;- p1 +
+  # because ggplot&#39;s geom_text will not be curved with coord_polar
+  geom_textpath(  
+    mapping = aes(x = tmp, y = y, label = label), 
+    data = labels, 
+    color = &quot;black&quot;,
+    upright = FALSE,
+    fontface = &quot;bold&quot;,
+    # Turn the letters upside down - 
+    # otherwise they&#39;ll be upside down once we change coord
+    angle = 180
+    ) +
+  # remove all the clutter we don&#39;t need
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = &quot;none&quot;,
+    panel.background = element_blank()
+  ) +
+  # the one black line she describes in the legend
+  annotate(geom = &quot;segment&quot;, x = 7.5, xend = 8.5, y = 2.66, yend = 2.66)
+
+p2</code></pre>
+<p><img src="http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-10-1.png" width="480" /></p>
+<p>Nightingale’s original titles all contain text with different font sizes in the same line. This is difficult to do with R’s internal functions (I think it might work using expressions), but trivial using <em>ggtext</em> and html. Finally, we add polar coordinates to the plot. This introduces a lot of whitespace because the margins are based on the original bars, which is extremely difficult to remove in ggplot directly. A slightly hacky solution is to export the finished plot and then crop all the whitespace on the sides using <em>knitr::plot_crop</em>.</p>
+<pre class="r"><code># define the title in html because of the different text sizes
+plot.title &lt;- &#39;
+  &lt;span style=&quot;font-size:21px;&quot;&gt;2.&lt;/span&gt; &lt;br&gt;
+  &lt;span style=&quot;font-size:21px;&quot;&gt;APRIL 1855 &lt;/span&gt; 
+  &lt;span style=&quot;font-size:15px;&quot;&gt;TO&lt;/span&gt; 
+  &lt;span style=&quot;font-size:21px;&quot;&gt; MARCH 1856&lt;/span&gt; 
+&#39;
+
+plot1 &lt;- p2 + 
+  # change to polar coordinates
+  coord_polar(start = 1.5*pi, direction = 1)   +
+  # and add labels manually
+  annotate(
+    geom = &quot;richtext&quot;, 
+    x = 4, y = 8.5, vjust = 0, 
+    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
+    label = plot.title
+    ) +
+  theme(plot.margin = margin(-150, -250, -70, -250))
+
+ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;plot1.jpg&quot;), plot1, width = 12, height = 12)
+knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;plot1.jpg&quot;))</code></pre>
+<p><img src="http://jonas-schropp.github.io/img/scurvy/plot1.jpg" style="width:70.0%" /></p>
+</div>
+<div id="april-1855-to-march-1856" class="section level2">
+<h2>2 April 1855 to March 1856</h2>
+<p>The second plot can be done in much the same way, with one relatively big difference: Here the order in which the colors are layered isn’t determined by the category of cause of death, but rather by the number of deaths in each category.</p>
+<pre class="r"><code>scurvy2 &lt;- scurvy %&gt;%
+  filter(Year == 1856 | Year == 1855 &amp; !(Month %in% c(&quot;January&quot;, &quot;February&quot;, &quot;March&quot;))) %&gt;%
+  arrange(Year, Month) %&gt;%
+  mutate(tmp = as.factor(rep(1:12, each = 3))) 
+
+scurvy2a &lt;- scurvy2 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(r == max(r)) %&gt;% 
+  ungroup()
+scurvy2b &lt;- scurvy2 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(r != max(r) &amp; r != min(r) &amp; r &gt; 0) %&gt;% 
+  ungroup()
+scurvy2c &lt;- scurvy2 %&gt;%
+  group_by(tmp) %&gt;%
+  filter(r == min(r) &amp; r &gt; 0) %&gt;% 
+  ungroup()
+
+# Labels - note here that the figure is much smaller, 
+# but the text doesn&#39;t scale down the same way
+labels &lt;- scurvy2a %&gt;%
+  mutate(
+    label = c(
+      &quot;APRIL 1855&quot;, &quot;MAY&quot;, &quot;JUNE&quot;, &quot;JULY&quot;, &quot;AUGUST&quot;, &quot;SEPTEMBER&quot;, &quot;OCTOBER&quot;, &quot;NOVEMBER&quot;, 
+      &quot;DECEMBER&quot;, &quot;JANUARY\n1856&quot;, &quot;FEBRUARY&quot;, &quot;MARCH&quot;
+      ),
+    y = if_else(
+      r &lt; 5, 5.2, r + 0.5
+    ),
+    `Cause of Death` = NA
+  )
+
+plot.title &lt;- &#39;
+  &lt;span style=&quot;font-size:20px;&quot;&gt;2.&lt;/span&gt; &lt;br&gt;
+  &lt;span style=&quot;font-size:20px;&quot;&gt;APRIL 1855 &lt;/span&gt; 
+  &lt;span style=&quot;font-size:14px;&quot;&gt;TO&lt;/span&gt; 
+  &lt;span style=&quot;font-size:20px;&quot;&gt; MARCH 1856&lt;/span&gt; 
+&#39;
+
+
+# Put the figure together
+plot2 &lt;- scurvy2 %&gt;% 
+  ggplot(aes(tmp, r)) + 
+    geom_bar_pattern(
+      data = scurvy2a,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;,  
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1    # to remove space between bars
+      ) + 
+    geom_bar_pattern(
+      data = scurvy2b,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;,  
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1    # to remove space between bars
+      ) + 
+    geom_bar_pattern(
+      data = scurvy2c,
+      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
+      stat = &quot;identity&quot;, 
+      position = &quot;identity&quot;, 
+      alpha = 0.7,
+      pattern = &quot;image&quot;,    # rather than color we use pattern from image
+      pattern_type = &quot;tile&quot;,
+      width = 1    # to remove space between bars
+      ) +
+  scale_pattern_filename_manual(
+    values = c(
+      &quot;Zymotic Diseases&quot; = &quot;color_zymotic.jpg&quot;, 
+      &quot;Wounds and Injuries&quot; = &quot;color_death.jpg&quot;, 
+      &quot;All other Causes&quot; = &quot;color_other.jpg&quot;)
+    )  +
+  scale_color_manual(
+    values = c(
+      &quot;Zymotic Diseases&quot; = &quot;#42514f&quot;, 
+      &quot;Wounds and Injuries&quot; = &quot;#ae7e79&quot;, 
+      &quot;All other Causes&quot; = &quot;black&quot;)
+    ) +
+  geom_textpath(
+    mapping = aes(x = tmp, y = y, label = label), 
+    data = labels, 
+    color = &quot;black&quot;,
+    upright = FALSE,
+    fontface = &quot;bold&quot;,
+    # Turn the letters upside down - otherwise they&#39;ll point in the wrong 
+    # direction once we change coord
+    angle = 180,    
+    size = 3
+    ) +
+  scale_y_continuous(limits = c(0, 9.75)) +
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = &quot;none&quot;,
+    panel.background = element_blank(),
+    plot.margin = margin(0, -100, -100, -100)
+  ) + 
+  coord_polar(start = 1.5*pi, direction = 1)  +
+  annotate(
+    geom = &quot;richtext&quot;, 
+    x = 3, y = 9, vjust = 0, 
+    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
+    label = plot.title
+    ) 
+
+ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;plot2.jpg&quot;), plot2, width = 6, height = 6)
+knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;plot2.jpg&quot;))</code></pre>
+<p><img src="http://jonas-schropp.github.io/img/scurvy/plot2.jpg" style="width:50.0%" /></p>
+</div>
+<div id="the-legend" class="section level2">
+<h2>The Legend</h2>
+<p>In order to define the legend we again use <em>ggtext::geom_richtext</em>, which allows us to write in html. This makes it much easier to use multiple lines and special formatting, like superscript in this case. It was difficult to find a font that was similar to Nightingale’s handwriting, so I picked <em>Lucida Calligraphy</em>, which seemed like the best bet – still a far way off.</p>
+<pre class="r"><code>lbl &lt;- &#39;
+&lt;span style=&quot;font-size:13px;&quot;&gt;
+  The Areas of the blue, red, &amp; black wedges are each measured from
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  the centre of the common vertex.
+  &lt;br&gt;
+  The blue wedges measured from the centre of the circle represent area
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  for area the deaths from Preventible or Mitigable Zymotic diseases; the
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  red wedges measured from the centre the deaths from wounds; &amp; the
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  black wedges measured from the centre the deaths from all other causes.
+  &lt;br&gt;
+  The black line across the red triangle in Nov.&lt;sup&gt;r&lt;/sup&gt; 1854 marks the boundary
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  of the deaths from all other causes during the month.
+  &lt;br&gt;
+  In October 1854, &amp; April 1855; the black area coincides with the red;
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;in January &amp; February 1856, the blue coincides with the black.
+  &lt;br&gt;
+  The entire areas may be compared by following the blue, the red &amp; the
+  &lt;br&gt;
+  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
+    emp
+  &lt;/span&gt;
+  black lines enclosing them.
+&lt;/span&gt;
+&#39;
+
+leg &lt;- ggplot() +
+  theme_void() +
+  scale_x_continuous(limits = c(0,105)) +
+  scale_y_continuous(limits = c(75,125)) +
+  annotate(
+    geom = &quot;richtext&quot;, 
+    x = 0, y = 100, vjust = 0.5, hjust = 0,
+    fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), &quot;pt&quot;), # remove padding
+    family = &quot;Lucida Calligraphy&quot;, 
+    label = lbl,
+    lineheight = 1.4
+    ) +
+  coord_fixed(1) 
+
+ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;legend.jpg&quot;), leg, width = 6, height = 5, bg = &quot;white&quot;)
+knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;legend.jpg&quot;))</code></pre>
+<p><img src="http://jonas-schropp.github.io/img/scurvy/legend.jpg" style="width:70.0%" /></p>
+</div>
+<div id="the-titles" class="section level2">
+<h2>The Title(s)</h2>
+<p>The main title and subtitle of the plot are defined in the same way, using <em>geom_richtext</em>. Notably this would have been very difficult to do in ggplot if we didn’t have the ability to use html because of the different font sizes. Similar to above, I couldn’t find a font that was similar enough to Nightingale’s handwriting.</p>
+<pre class="r"><code>plot.title &lt;- &#39;
+  &lt;span style=&quot;font-size:28px;&quot;&gt;DIAGRAM &lt;/span&gt; 
+  &lt;span style=&quot;font-size:20px;&quot;&gt;OF THE&lt;/span&gt; 
+  &lt;span style=&quot;font-size:28px;&quot;&gt; CAUSES &lt;/span&gt; 
+  &lt;span style=&quot;font-size:20px;&quot;&gt;OF&lt;/span&gt; 
+  &lt;span style=&quot;font-size:28px;&quot;&gt; MORTALITY&lt;/span&gt;
+&#39;
+
+plot.subtitle &lt;- &#39;
+  &lt;span style=&quot;font-size:16px;&quot;&gt;IN THE&lt;/span&gt; 
+  &lt;span style=&quot;font-size:22px;&quot;&gt; ARMY &lt;/span&gt; 
+  &lt;span style=&quot;font-size:16px;&quot;&gt;IN THE&lt;/span&gt; 
+  &lt;span style=&quot;font-size:22px;&quot;&gt; EAST.&lt;/span&gt; 
+&#39;
+
+titles &lt;- ggplot() +
+  theme_void() +
+  scale_x_continuous(limits = c(0,100)) +
+  scale_y_continuous(limits = c(97,100)) +
+  annotate(
+    geom = &quot;richtext&quot;, 
+    x = 50, y = 99, vjust = 0, 
+    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
+    label = plot.title
+    ) +
+  annotate(
+    geom = &quot;richtext&quot;, 
+    x = 50, y = 98.3, vjust = 0, 
+    label.colour = &quot;white&quot;,
+    label = plot.subtitle
+    ) +
+  annotate(geom = &quot;segment&quot;, x = 44, y = 98, xend = 56, yend = 97.97) +
+  annotate(geom = &quot;segment&quot;, x = 43, y = 97.9, xend = 57, yend = 97.9)
+
+ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;titles.jpg&quot;), titles, width = 12, height = 1, bg = &quot;white&quot;)
+knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;titles.jpg&quot;))</code></pre>
+<p><img src="http://jonas-schropp.github.io/img/scurvy/titles.jpg" style="width:70.0%" /></p>
+</div>
+<div id="putting-it-all-together" class="section level2">
+<h2>Putting it all together</h2>
+<p>Because each of the four different elements was already saved as a .jpg file and cropped, it is relatively easy to put together using <em>cowplot</em>. We simply read in each picture, then arrange them on an empty ggplot, remove the background and add the dashed annotation line.</p>
+<pre class="r"><code>plot1 &lt;- readJPEG(&quot;plot1.jpg&quot;, native = TRUE)
+plot2 &lt;- readJPEG(&quot;plot2.jpg&quot;, native = TRUE)
+lbl &lt;- readJPEG(&quot;legend.jpg&quot;, native = TRUE)
+titles &lt;- readJPEG(&quot;titles.jpg&quot;, native = TRUE)
+
+rose &lt;- ggplot() +
+  scale_x_continuous(limits = c(0, 300)) +
+  scale_y_continuous(limits = c(0, 210)) +
+  draw_image(
+    image = plot2, x = 0, y = 100, width = 100, height = 100
+    ) +
+  draw_image(
+    image = lbl, x = 2.5, y = 2.5, width = 150, height = 80
+    ) +
+  draw_image(
+    image = plot1, x = 150, y = 2.5, width = 150, height = 199
+    ) +
+  draw_image(
+    image = titles, x = 150, y = 200, width = 150, 
+    height = 15, hjust = 0.5, vjust = 0.5
+    ) +
+  annotate(
+    geom = &quot;segment&quot;, x = 165, xend = 89, y = 119.5, yend = 100, 
+    linetype = &quot;dashed&quot;, size = 0.5
+    ) +
+  annotate(
+    geom = &quot;segment&quot;, x = 88.5, xend = 20.5, y = 100, yend = 136.5, 
+    linetype = &quot;dashed&quot;, size = 0.5
+    ) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = &quot;white&quot;)
+  )
+
+ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;rose.jpg&quot;), rose, width = 16, height = 10.5, bg = &quot;white&quot;)</code></pre>
+<p><br>Et voila! My version of the rose:</p>
+<p><img src="http://jonas-schropp.github.io/img/scurvy/rose2.jpg" style="width:100.0%" /></p>
+</div>
+</div>
+
+    
+    
+    <h3>Citation</h3>
+    <div class="columns">
+      <div class="column is-half">
+        For attribution, please cite this work as
+        <div class="highlight" style="border: 1px solid grey">
+          <p style="padding: 1em;font-family: 'monospace">
+            Jonas Schropp (Apr 12, 2022) Of Scurvy in the Army. Retrieved from http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/index/
+          </p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <b>BibTeX citation</b>
+        <div class="highlight" style="border: 1px solid grey">
+          <p style="padding: 1em;font-family: 'monospace">
+            @misc{ 2022-of-scurvy-in-the-army,<br>
+            &emsp;author = { Jonas Schropp },<br>
+            &emsp;title = { Of Scurvy in the Army },<br>
+            &emsp;url = { http://jonas-schropp.github.io/blog/2022-04-01-of-scurvy-in-the-army/index/ },<br>
+            &emsp;year = { 2022 }<br>
+            &emsp;updated = { Apr 12, 2022 }<br> 
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+
+<div class="container giscus my-4">
+    <script src="https://giscus.app/client.js"
+        data-repo=jonas-schropp/website-source
+        data-repo-id=MDEwOlJlcG9zaXRvcnkxMjM0NzEwMTI&#61;
+        data-category=Comments
+        data-category-id=DIC_kwDOB1wEpM4CAG0c
+        data-mapping=pathname
+        data-reactions-enabled=1
+        data-emit-metadata=0
+        data-theme=/css/giscus.css
+        data-lang=en
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+
+
+
+                
+                <div class="container">
+    <hr>
+</div>
+<div class="container has-text-centered top-pad">
+    <a href="#top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div class="container">
+    <hr>
+</div>
+
+                <div class="section" id="footer">
+    <div class="container has-text-centered">
+    
+        <span class="footer-text">
+            Jonas Schropp <i class="fab fa-creative-commons" aria-hidden="true"></i>-<i class="fab fa-creative-commons-by"></i>-<i class="fab fa-creative-commons-sa"></i>-2022. View source code on <a href="https://github.com/jonas-schropp/website-source"><i class="fab fa-github"></i></a>.
+        </span>
+    
+    </div>
+</div>
+
+                
+            </div>
+        </section>
+        
+        
+
+
+<script src="http://jonas-schropp.github.io/js/bundle.5c23c0437f001a469ca373a465a6f7487203d18e10cdff76d86a60af66d5ee28.js" integrity="sha256-XCPAQ38AGkaco3OkZab3SHID0Y4Qzf922Gpgr2bV7ig=" crossorigin="anonymous">></script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-115545202-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+
+  <script defer data-domain=jonas-schropp.com src="https://plausible.io/js/plausible.js"></script>
+
+
+
+
+
+
+
+<script src="http://jonas-schropp.github.io/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+        
+        
+        
+        
+    </body>
+</html>

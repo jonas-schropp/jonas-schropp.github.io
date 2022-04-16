@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Jonas Schropp</title>
+    <link>http://jonas-schropp.github.io/tags/</link>
+    <description>Recent content in Tags on Jonas Schropp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://jonas-schropp.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ggplot2</title>
+      <link>http://jonas-schropp.github.io/tags/ggplot2/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://jonas-schropp.github.io/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>http://jonas-schropp.github.io/tags/r/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://jonas-schropp.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rose chart</title>
+      <link>http://jonas-schropp.github.io/tags/rose-chart/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://jonas-schropp.github.io/tags/rose-chart/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
