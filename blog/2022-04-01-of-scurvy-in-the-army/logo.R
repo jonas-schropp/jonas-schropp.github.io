@@ -206,10 +206,10 @@ plot2 <- scurvy1 %>%
   geom_textpath(  
     mapping = aes(x = tmp, y = y, label = label), 
     data = labels, 
-    color = "lightgrey",
+    color = "#393D47",
     upright = FALSE,
     fontface = "bold",
-    alpha = 0.4,
+    alpha = 0.8,
     # Turn the letters upside down - 
     # otherwise they'll be upside down once we change coord
     angle = 180
@@ -228,7 +228,7 @@ plot2 <- scurvy1 %>%
   # change to polar coordinates
   coord_polar(start = 0.7*pi, direction = 1)
 
-ggsave(here::here("static/img/", "logo2.png"), plot2, width = 12, height = 12, bg = 'transparent')
+ggsave(here::here("static/img/", "logo2.png"), plot2, width = 12, height = 12, bg = 'transparent', dpi = 100)
 
 
 
