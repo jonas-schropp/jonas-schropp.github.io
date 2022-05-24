@@ -56,7 +56,7 @@ Of Scurvy in the Army - Jonas Schropp
                 
                 
 
-<h1 class="bold-title is-1">Projects &amp; Ideas</h1>
+
 
 
             </div>
@@ -125,9 +125,18 @@ Of Scurvy in the Army - Jonas Schropp
 
 
                 
+
+<link rel="stylesheet" href="../../../css/atom-one-dark.min.css" rel="stylesheet" id="theme-stylesheet"> 
+<script src="../../../js/highlight.js"></script>
+<script>hljs.highlightAll();</script>
+
 <div class="container">
     <h2 class="title is-1 top-pad strong-post-title">
         <a href="../../../blog/2022-04-01-of-scurvy-in-the-army/index/">Of Scurvy in the Army</a>
+    </h2>
+    
+    <h2 class="subtitle"> 
+        <a href="../../../blog/2022-04-01-of-scurvy-in-the-army/index/">Recreating Florence Nightingale&rsquo;s Diagram of the Causes of Mortality in the Army of the East with ggplot2</a>
     </h2>
     <div class="post-data">
         Apr 12, 2022 |
@@ -175,639 +184,615 @@ Of Scurvy in the Army - Jonas Schropp
 </div>
 
 <div class="container markdown top-pad">
-     
-
-<script src="../../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
-
-
-<div id="introduction-or-the-war-in-crimea" class="section level1">
-<h1>Introduction or The War in Crimea</h1>
-<p>It feels quite weird to start blogging. I don’t use Instagram, Twitter, Facebook or Tiktok. I like to turn my phone silent during the day. I don’t particularly enjoy advertising myself online, but I’ve learned a lot by reading hundreds (if not thousands) of blog posts over the years and this seems like the best way to share my own thoughts and ideas. In long form rather than 140 characters. <br></p>
+    
+<h1 id="introduction-or-the-war-in-crimea" class="anchor-link"><a href="#introduction-or-the-war-in-crimea">Introduction or The War in Crimea</a></h1>
+<p>It feels quite weird to start blogging. I don&rsquo;t use Instagram, Twitter, Facebook or Tiktok. I like to turn my phone silent during the day. I don&rsquo;t particularly enjoy advertising myself online, but I&rsquo;ve learned a lot by reading hundreds (if not thousands) of blog posts over the years and this seems like the best way to share my own thoughts and ideas. In long form rather than 140 characters. <br></p>
 <p>This being my first post, it seems only fitting to share how I made the logo for the website. Let me take you on a wild ride through history, healthcare and the pitfalls of data visualization with R. <br></p>
 <p>In July 1853 czar Nicholas I tried to expand Russian territories against a declining Ottoman empire. Russia quickly occupied the Danubian Principalities of Moldavia and Wallachia in modern day Romania and war expanded all throughout the Black Sea and its western shores. Fearing an Ottoman collapse, the British and the French ordered their fleets to enter the Black Sea in January 1854. Soon after the Austrian empire entered the war and started pushing back the Russian forces from the west. The czar and his generals had underestimated the unity of the west. <br></p>
 <p>Conditions on the front lines were harsh. On top of the constant dangers of armed conflict, food rations were small, support and medical staff were underrepresented and overworked, hygiene standards were basically non-existent. Mass infections were common and medicines to treat them were constantly in short supply. This, however, was the reality of nearly every war at the time. It took Florence Nightingale and her <em>Diagram of the Causes of Mortality in the Army of the East</em> to completely change the standard of care and reduce the death rate in the British troops from 42% to 2%. Her findings would have far-reaching implications not only during the Crimean War, but for hospital care around the world and until this day. <br></p>
 <p>Nightingale and her staff of 38 volunteer nurses reached Istanbul in November 1854 to treat wounded soldiers who had been sent there over 500 km away in the Crimea. During her first winter there she noticed that out of the 4077 patients who died, more than 90% died of avoidable illnesses such as typhus, typhoid, cholera, and dysentery. In February 1855 Nightingale sent <a href="https://www.nationalarchives.gov.uk/battles/crimea/popup/medical.htm">a report</a> to the London newspaper <em>The Times</em>, lamenting conditions at the camp. As a response to her report a prefabricated hospital was shipped from England to the Dardanelles, the sewers were flushed out and ventilation was improved, greatly reducing death rates over the following years.</p>
-</div>
-<div id="the-rose" class="section level1">
-<h1>The Rose</h1>
+
+<h1 id="the-rose" class="anchor-link"><a href="#the-rose">The Rose</a></h1>
 <p>These extraordinary achievements, however, might have been largely forgotten had Nightingale not published her book <em>Notes on matters affecting the health, efficiency, and hospital administration of the British Army</em> less than four years later, which can be read in full on <em>archive.org</em>:</p>
-<p align="center">
-<iframe src="https://archive.org/embed/b20387118" width="840" height="576" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen>
-</iframe>
-</p>
+<p align="center"><iframe src="https://archive.org/embed/b20387118" width="840" height="576" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe></p>
 <p>In the years following, Nightingale would lobby heavily for public health legislation, which was in dire need. Half of all children in urban areas were dying before age 5. The average life span across Britain was at a mere 40 years, with some areas such as Liverpool even lower at only 26 years. 4 out of 10 deaths were from infectious diseases and therefore often avoidable. In 1875, finally, her efforts were rewarded with the <em>Public Health Act</em>, which subsequently improved the average life span to over 60 years. <br></p>
-<p>Much of Nightingale’s success is often credited to the most famous diagram in her 1858 book, the <em>Diagram of the Causes of Mortality in the Army of the East</em>. It shows that the death rate from zygotic disease (largely avoidable infections) was not only higher than for any other cause, but also higher in the first year of the war, before improvements in sanitation were implemented. <br></p>
+<p>Much of Nightingale&rsquo;s success is often credited to the most famous diagram in her 1858 book, the <em>Diagram of the Causes of Mortality in the Army of the East</em>. It shows that the death rate from zygotic disease (largely avoidable infections) was not only higher than for any other cause, but also higher in the first year of the war, before improvements in sanitation were implemented. <br></p>
 <div class="figure">
-<img src="https://upload.wikimedia.org/wikipedia/commons/archive/1/17/20201105141904%21Nightingale-mortality.jpg" style="width:70.0%" alt="" />
-<p class="caption">Florence Nightingale’s beautiful ‘Diagram of the Causes of Mortality in the Army of the East’</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/archive/1/17/20201105141904%21Nightingale-mortality.jpg" alt="Florence Nightingale's beautiful 'Diagram of the Causes of Mortality in the Army of the East'"  />
+<p class="caption">Figure 1: Florence Nightingale's beautiful 'Diagram of the Causes of Mortality in the Army of the East'</p>
 </div>
-<p>The diagram consists of two main parts: on the right, the number of deaths at the camp in the first year of the war (April 1854 - March 1855), on the left the deaths during the following year (April 1855 - March 1856). In each of the graphs, causes of death are color coded, blue representing zymotic diseases, red wounds and injuries and black all other causes. The numbers for each month are presented in a circular fashion and area of each of the 12 slices – measured from the center – represents the numbers of deaths. The color coded areas are therefore overlapping. <br></p>
-<p>The circular fashion in which Nightingale presents the progression of each year as well as her mastery of color make the Rose visually appealing. The message is immediately clear as well: those blue areas are bigger than the red and black ones together, but they become smaller over time. In the following post I will show how to recreate Nightingale’s famous diagram using <em>R</em> with <em>ggplot2</em>. In the progress we will touch on several subjects, such as:</p>
+<p>The diagram consists of two main parts: on the right, the number of deaths at the camp in the first year of the war (April 1854 - March 1855), on the left the deaths during the following year (April 1855 - March 1856). In each of the graphs, causes of death are color coded, blue representing zymotic diseases, red wounds and injuries and black all other causes. The numbers for each month are presented in a circular fashion and area of each of the 12 slices &ndash; measured from the center &ndash; represents the numbers of deaths. The color coded areas are therefore overlapping. <br></p>
+<p>The circular fashion in which Nightingale presents the progression of each year as well as her mastery of color make the Rose visually appealing. The message is immediately clear as well: those blue areas are bigger than the red and black ones together, but they become smaller over time. In the following post I will show how to recreate Nightingale&rsquo;s famous diagram using <em>R</em> with <em>ggplot2</em>. In the progress we will touch on several subjects, such as:</p>
 <ul>
 <li>changing the type of font used in your graphics (with extrafont)</li>
 <li>using patterns or textures rather than fill colors (with ggpattern)</li>
 <li>adding circular coordinate systems to your ggplot</li>
 <li>using html to customize text and label appearance in your graphics (with ggtext)</li>
-<li>removing annoying whitespace around your plots when <em>plot.margins</em> just won’t do</li>
+<li>removing annoying whitespace around your plots when <em>plot.margins</em> just won&rsquo;t do</li>
 <li>and finally arranging several figures and images (with cowplot and patchwork)</li>
 </ul>
-</div>
-<div id="recreating-the-rose-in-r" class="section level1">
-<h1>Recreating the Rose in R</h1>
-<p>In order to recreate the diagram, I copied the data Nightingale published in her book <em>Notes on matters affecting the health…</em> into a csv file named <em>TableNo2.csv</em>. You can find the csv in this blog post’s github directory and use it however you please.</p>
-<pre class="r"><code>suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(extrafont))
-suppressPackageStartupMessages(library(cowplot))
-suppressPackageStartupMessages(library(ggpubr))
-suppressPackageStartupMessages(library(patchwork))
-suppressPackageStartupMessages(library(here))
-library(magrittr)
-library(ggplot2)
-library(ggpattern)
-library(geomtextpath)
-library(ggtext)
-library(jpeg)
 
-# Read in the data
-scurvy &lt;- readr::read_csv(&quot;TableNo2.csv&quot;, show_col_types = FALSE)
-knitr::kable(head(scurvy, 6))</code></pre>
-<table>
-<colgroup>
-<col width="4%" />
-<col width="8%" />
-<col width="40%" />
-<col width="14%" />
-<col width="17%" />
-<col width="14%" />
-</colgroup>
+<h1 id="recreating-the-rose-in-r" class="anchor-link"><a href="#recreating-the-rose-in-r">Recreating the Rose in R</a></h1>
+<p>In order to recreate the diagram, I copied the data Nightingale published in her book <em>Notes on matters affecting the health&hellip;</em> into a csv file named <em>TableNo2.csv</em>. You can find the csv in this blog post&rsquo;s github directory and use it however you please.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">extrafont</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">cowplot</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">ggpubr</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">here</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">magrittr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggpattern</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">geomtextpath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggtext</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">jpeg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Read in the data</span>
+</span></span><span class="line"><span class="cl"><span class="n">scurvy</span> <span class="o">&lt;-</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;TableNo2.csv&#34;</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">head</span><span class="p">(</span><span class="n">scurvy</span><span class="p">,</span> <span class="m">6</span><span class="p">))</span>
+</span></span></code></pre></div><table>
 <thead>
-<tr class="header">
-<th align="right">Year</th>
-<th align="left">Month</th>
-<th align="right">Estimated Average Monthly Strength of the Army</th>
-<th align="right">Zymotic Diseases</th>
-<th align="right">Wounds and Injuries</th>
-<th align="right">All other Causes</th>
+<tr>
+<th style="text-align:right">Year</th>
+<th style="text-align:left">Month</th>
+<th style="text-align:right">Estimated Average Monthly Strength of the Army</th>
+<th style="text-align:right">Zymotic Diseases</th>
+<th style="text-align:right">Wounds and Injuries</th>
+<th style="text-align:right">All other Causes</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">April</td>
-<td align="right">8571</td>
-<td align="right">1</td>
-<td align="right">NA</td>
-<td align="right">5</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">April</td>
+<td style="text-align:right">8571</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">5</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">May</td>
-<td align="right">23333</td>
-<td align="right">12</td>
-<td align="right">NA</td>
-<td align="right">9</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">May</td>
+<td style="text-align:right">23333</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">9</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">June</td>
-<td align="right">28333</td>
-<td align="right">11</td>
-<td align="right">NA</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">June</td>
+<td style="text-align:right">28333</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">6</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">July</td>
-<td align="right">28722</td>
-<td align="right">359</td>
-<td align="right">NA</td>
-<td align="right">23</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">July</td>
+<td style="text-align:right">28722</td>
+<td style="text-align:right">359</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">23</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">August</td>
-<td align="right">30246</td>
-<td align="right">828</td>
-<td align="right">1</td>
-<td align="right">30</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">August</td>
+<td style="text-align:right">30246</td>
+<td style="text-align:right">828</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">30</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">September</td>
-<td align="right">30290</td>
-<td align="right">788</td>
-<td align="right">81</td>
-<td align="right">70</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">September</td>
+<td style="text-align:right">30290</td>
+<td style="text-align:right">788</td>
+<td style="text-align:right">81</td>
+<td style="text-align:right">70</td>
 </tr>
 </tbody>
 </table>
 <p><br>Because I copied the data just like it was presented in the book, it first needs to be transformed into long format before plotting. The new column <em>Cause of Death</em> is turned into a factor to have more control over how the colors are plotted later on.</p>
-<pre class="r"><code>scurvy %&lt;&gt;%
-  select(-`Estimated Average Monthly Strength of the Army`) %&gt;%   
-  tidyr::pivot_longer(
-    cols = c(&quot;Zymotic Diseases&quot;, &quot;Wounds and Injuries&quot;, &quot;All other Causes&quot;), 
-    names_to = &quot;Cause of Death&quot;
-    ) %&gt;%
-  mutate(
-    Month = factor(Month, levels = month.name, labels = month.name),
-    value = if_else(is.na(value), 0, value),
-    `Cause of Death` = factor(
-      `Cause of Death`, 
-      levels = c(&quot;Zymotic Diseases&quot;, &quot;Wounds and Injuries&quot;, &quot;All other Causes&quot;))
-    ) 
-
-knitr::kable(head(scurvy, 9))</code></pre>
-<table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">scurvy</span> <span class="o">%&lt;&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">`Estimated Average Monthly Strength of the Army`</span><span class="p">)</span> <span class="o">%&gt;%</span>   
+</span></span><span class="line"><span class="cl">  <span class="n">tidyr</span><span class="o">::</span><span class="nf">pivot_longer</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Zymotic Diseases&#34;</span><span class="p">,</span> <span class="s">&#34;Wounds and Injuries&#34;</span><span class="p">,</span> <span class="s">&#34;All other Causes&#34;</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;Cause of Death&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Month</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="n">Month</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">month.name</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">month.name</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">value</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">`Cause of Death`</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">`Cause of Death`</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Zymotic Diseases&#34;</span><span class="p">,</span> <span class="s">&#34;Wounds and Injuries&#34;</span><span class="p">,</span> <span class="s">&#34;All other Causes&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">kable</span><span class="p">(</span><span class="nf">head</span><span class="p">(</span><span class="n">scurvy</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
+</span></span></code></pre></div><table>
 <thead>
-<tr class="header">
-<th align="right">Year</th>
-<th align="left">Month</th>
-<th align="left">Cause of Death</th>
-<th align="right">value</th>
+<tr>
+<th style="text-align:right">Year</th>
+<th style="text-align:left">Month</th>
+<th style="text-align:left">Cause of Death</th>
+<th style="text-align:right">value</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">April</td>
-<td align="left">Zymotic Diseases</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">April</td>
+<td style="text-align:left">Zymotic Diseases</td>
+<td style="text-align:right">1</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">April</td>
-<td align="left">Wounds and Injuries</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">April</td>
+<td style="text-align:left">Wounds and Injuries</td>
+<td style="text-align:right">0</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">April</td>
-<td align="left">All other Causes</td>
-<td align="right">5</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">April</td>
+<td style="text-align:left">All other Causes</td>
+<td style="text-align:right">5</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">May</td>
-<td align="left">Zymotic Diseases</td>
-<td align="right">12</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">May</td>
+<td style="text-align:left">Zymotic Diseases</td>
+<td style="text-align:right">12</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">May</td>
-<td align="left">Wounds and Injuries</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">May</td>
+<td style="text-align:left">Wounds and Injuries</td>
+<td style="text-align:right">0</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">May</td>
-<td align="left">All other Causes</td>
-<td align="right">9</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">May</td>
+<td style="text-align:left">All other Causes</td>
+<td style="text-align:right">9</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">June</td>
-<td align="left">Zymotic Diseases</td>
-<td align="right">11</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">June</td>
+<td style="text-align:left">Zymotic Diseases</td>
+<td style="text-align:right">11</td>
 </tr>
-<tr class="even">
-<td align="right">1854</td>
-<td align="left">June</td>
-<td align="left">Wounds and Injuries</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">June</td>
+<td style="text-align:left">Wounds and Injuries</td>
+<td style="text-align:right">0</td>
 </tr>
-<tr class="odd">
-<td align="right">1854</td>
-<td align="left">June</td>
-<td align="left">All other Causes</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:right">1854</td>
+<td style="text-align:left">June</td>
+<td style="text-align:left">All other Causes</td>
+<td style="text-align:right">6</td>
 </tr>
 </tbody>
 </table>
-<p>Now reading through Nightingale’s description, she used the area to scale the slices rather than the distance from the center. The easiest way to do this should be to transform the input data. The area of a circle sector is given by <span class="math inline">\(A=r^2 \alpha / 2\)</span>, where <span class="math inline">\(\alpha\)</span> is the angle (30 degrees in this case) and <span class="math inline">\(r\)</span> is the radius. That means we have to transform our <em>value</em> column such that <span class="math inline">\(r = \sqrt{2*value / 30}\)</span></p>
-<pre class="r"><code>scurvy %&lt;&gt;% mutate(r = sqrt(2*value / 30))</code></pre>
-<p><br>From a modern point of view, this might have been a bad choice: evaluating the area of overlapping pie slices seems error prone and can lead the reader to underestimate the true differences between the numbers. Nevertheless, the easiest way to implement this particular style of presentation is to transform the data before plotting.</p>
-<div id="april-1854-to-march-1855" class="section level2">
-<h2>1 April 1854 to March 1855</h2>
+<p>Now reading through Nightingale&rsquo;s description, she used the area to scale the slices rather than the distance from the center. The easiest way to do this should be to transform the input data. The area of a circle sector is given by <code>\(A=r^2 \alpha / 2\)</code>, where <code>\(\alpha\)</code> is the angle (30 degrees in this case) and <code>\(r\)</code> is the radius. That means we have to transform our <em>value</em> column such that <code>\(r = \sqrt{2*value / 30}\)</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">scurvy</span> <span class="o">%&lt;&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">value</span> <span class="o">/</span> <span class="m">30</span><span class="p">))</span>
+</span></span></code></pre></div><p><br>From a modern point of view, this might have been a bad choice: evaluating the area of overlapping pie slices seems error prone and can lead the reader to underestimate the true differences between the numbers. Nevertheless, the easiest way to implement this particular style of presentation is to transform the data before plotting.</p>
+
+<h2 id="1-april-1854-to-march-1855" class="anchor-link"><a href="#1-april-1854-to-march-1855">1 April 1854 to March 1855</a></h2>
 <p>Because the graphic is split into two distinct parts, I start by only selecting the relevant months for the first plot.</p>
-<pre class="r"><code>scurvy1 &lt;- scurvy %&gt;%
-  filter(
-    Year == 1854 | Year == 1855 &amp; Month %in% c(&quot;January&quot;, &quot;February&quot;, &quot;March&quot;)
-    ) %&gt;%
-  arrange(Year, Month) %&gt;%
-  mutate(
-    tmp = as.factor(rep(1:12, each = 3)),
-    `Cause of Death` = factor(
-      `Cause of Death`, 
-      levels = c(&quot;All other Causes&quot;, &quot;Wounds and Injuries&quot;, &quot;Zymotic Diseases&quot;)
-      )
-    ) </code></pre>
-<p><br>Then, because the areas are overlapping, it is easiest to make three new data sets – one for each cause of death. This is also necessary because <em>geom_bar_pattern</em> appears to fail when trying to plot an area of 0 in combination with <em>coord_polar</em>.</p>
-<pre class="r"><code>scurvy1a &lt;- scurvy1 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(`Cause of Death` == &quot;Zymotic Diseases&quot;) %&gt;% 
-  ungroup()
-scurvy1b &lt;- scurvy1 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(`Cause of Death` == &quot;All other Causes&quot; &amp; r &gt; 0) %&gt;% 
-  ungroup()
-scurvy1c &lt;- scurvy1 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(`Cause of Death` == &quot;Wounds and Injuries&quot; &amp; r &gt; 0) %&gt;% 
-  ungroup()</code></pre>
-<p><br>In order to use background patterns that are true to Nightingale’s original work – which was drawn using crayons – three pictures need to be saved. Each one contains a representative area cut out from the original graphic that can be used to define the respective color. A vector containing the paths to each of the images is defined.</p>
-<pre class="r"><code>images &lt;- c(
-  &quot;color_death.jpg&quot;, &quot;color_zymotic.jpg&quot;, &quot;color_other.jpg&quot;
-)</code></pre>
-<p><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">scurvy1</span> <span class="o">&lt;-</span> <span class="n">scurvy</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Year</span> <span class="o">==</span> <span class="m">1854</span> <span class="o">|</span> <span class="n">Year</span> <span class="o">==</span> <span class="m">1855</span> <span class="o">&amp;</span> <span class="n">Month</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;January&#34;</span><span class="p">,</span> <span class="s">&#34;February&#34;</span><span class="p">,</span> <span class="s">&#34;March&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="n">Year</span><span class="p">,</span> <span class="n">Month</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span> <span class="n">each</span> <span class="o">=</span> <span class="m">3</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">`Cause of Death`</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">`Cause of Death`</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;All other Causes&#34;</span><span class="p">,</span> <span class="s">&#34;Wounds and Injuries&#34;</span><span class="p">,</span> <span class="s">&#34;Zymotic Diseases&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> 
+</span></span></code></pre></div><p><br>Then, because the areas are overlapping, it is easiest to make three new data sets &ndash; one for each cause of death. This is also necessary because <em>geom_bar_pattern</em> appears to fail when trying to plot an area of 0 in combination with <em>coord_polar</em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">scurvy1a</span> <span class="o">&lt;-</span> <span class="n">scurvy1</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">`Cause of Death`</span> <span class="o">==</span> <span class="s">&#34;Zymotic Diseases&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">scurvy1b</span> <span class="o">&lt;-</span> <span class="n">scurvy1</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">`Cause of Death`</span> <span class="o">==</span> <span class="s">&#34;All other Causes&#34;</span> <span class="o">&amp;</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">scurvy1c</span> <span class="o">&lt;-</span> <span class="n">scurvy1</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">`Cause of Death`</span> <span class="o">==</span> <span class="s">&#34;Wounds and Injuries&#34;</span> <span class="o">&amp;</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span></code></pre></div><p><br>In order to use background patterns that are true to Nightingale&rsquo;s original work &ndash; which was drawn using crayons &ndash; three pictures need to be saved. Each one contains a representative area cut out from the original graphic that can be used to define the respective color. A vector containing the paths to each of the images is defined.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">images</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;color_death.jpg&#34;</span><span class="p">,</span> <span class="s">&#34;color_zymotic.jpg&#34;</span><span class="p">,</span> <span class="s">&#34;color_other.jpg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-8-1.png" width="576" />
 <p>In the next step, a simple bar plot with with several important twists is created. Rather than <em>ggplot2::geom_bar</em>, we use <em>ggpattern::geom_bar_pattern</em>, which allows us to define the images above as the background fill color. We do this three times, because the areas of the differently colored causes of death are overlapping and this way we have full control over how they overlap This will become especially important for the second plot, where Nightingale apparently used different rules to determine what goes on top of what. By specifying <code>width = 1</code> we make sure that there is no space between bars.</p>
-<pre class="r"><code>p1 &lt;- scurvy1 %&gt;% 
-  filter(r &gt; 0) %&gt;%
-  ggplot() + 
-    geom_bar_pattern(
-      data = scurvy1a,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;,  
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1,    # to remove space between bars
-      size = 0.4
-      ) + 
-    geom_bar_pattern(
-      data = scurvy1b,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;,  
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1,    # to remove space between bars
-      size = 0.4
-      ) + 
-    geom_bar_pattern(
-      data = scurvy1c,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;, 
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1,    # to remove space between bars
-      size = 0.4
-      ) +
-  scale_pattern_filename_manual(
-    values = c(
-      &quot;Zymotic Diseases&quot; = &quot;color_zymotic.jpg&quot;, 
-      &quot;Wounds and Injuries&quot; = &quot;color_death.jpg&quot;, 
-      &quot;All other Causes&quot; = &quot;color_other.jpg&quot;)
-    )  +
-  scale_color_manual(
-    values = c(
-      &quot;Zymotic Diseases&quot; = &quot;#42514f&quot;, 
-      &quot;Wounds and Injuries&quot; = &quot;#ae7e79&quot;, 
-      &quot;All other Causes&quot; = &quot;black&quot;)
-    ) +
-  scale_y_continuous(limits = c(0, 14.25))
-
-p1</code></pre>
-<p><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-8-1.png" width="480" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">scurvy1</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy1a</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="n">size</span> <span class="o">=</span> <span class="m">0.4</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy1b</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="n">size</span> <span class="o">=</span> <span class="m">0.4</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy1c</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="n">size</span> <span class="o">=</span> <span class="m">0.4</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_pattern_filename_manual</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Zymotic Diseases&#34;</span> <span class="o">=</span> <span class="s">&#34;color_zymotic.jpg&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Wounds and Injuries&#34;</span> <span class="o">=</span> <span class="s">&#34;color_death.jpg&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;All other Causes&#34;</span> <span class="o">=</span> <span class="s">&#34;color_other.jpg&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>  <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_color_manual</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Zymotic Diseases&#34;</span> <span class="o">=</span> <span class="s">&#34;#42514f&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Wounds and Injuries&#34;</span> <span class="o">=</span> <span class="s">&#34;#ae7e79&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;All other Causes&#34;</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">14.25</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p1</span>
+</span></span></code></pre></div><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-9-1.png" width="480" />
 <p>Next, the labels are defined manually and allocated a height (variable <em>y</em>) above the bars.</p>
-<pre class="r"><code>labels &lt;- scurvy1a %&gt;% 
-  mutate(
-    label = c(
-      &quot;APRIL\n1854&quot;, &quot;MAY&quot;, &quot;JUNE&quot;, &quot;JULY&quot;, &quot;AUGUST&quot;, &quot;SEPTEMBER&quot;, &quot;OCTOBER&quot;, &quot;NOVEMBER&quot;, 
-      &quot;DECEMBER&quot;, &quot;JANUARY 1855&quot;, &quot;FEBRUARY&quot;, &quot;MARCH 1855&quot;
-      ),
-    y = if_else(
-      r &lt; 4, 3.8, r + 0.5
-    ),
-    `Cause of Death` = NA
-  )</code></pre>
-<p><br>We remove the legend, the axis labels and titles and add the custom annotation layer. In order to do this, we use <em>geom_textpath</em>, which makes it possible to curve the labels just like in the original. We also need to turn the labels on their head because otherwise their direction will be wrong later on.</p>
-<pre class="r"><code>p2 &lt;- p1 +
-  # because ggplot&#39;s geom_text will not be curved with coord_polar
-  geom_textpath(  
-    mapping = aes(x = tmp, y = y, label = label), 
-    data = labels, 
-    color = &quot;black&quot;,
-    upright = FALSE,
-    fontface = &quot;bold&quot;,
-    # Turn the letters upside down - 
-    # otherwise they&#39;ll be upside down once we change coord
-    angle = 180
-    ) +
-  # remove all the clutter we don&#39;t need
-  theme(
-    axis.title = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    legend.position = &quot;none&quot;,
-    panel.background = element_blank()
-  ) +
-  # the one black line she describes in the legend
-  annotate(geom = &quot;segment&quot;, x = 7.5, xend = 8.5, y = 2.66, yend = 2.66)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">&lt;-</span> <span class="n">scurvy1a</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;APRIL\n1854&#34;</span><span class="p">,</span> <span class="s">&#34;MAY&#34;</span><span class="p">,</span> <span class="s">&#34;JUNE&#34;</span><span class="p">,</span> <span class="s">&#34;JULY&#34;</span><span class="p">,</span> <span class="s">&#34;AUGUST&#34;</span><span class="p">,</span> <span class="s">&#34;SEPTEMBER&#34;</span><span class="p">,</span> <span class="s">&#34;OCTOBER&#34;</span><span class="p">,</span> <span class="s">&#34;NOVEMBER&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;DECEMBER&#34;</span><span class="p">,</span> <span class="s">&#34;JANUARY 1855&#34;</span><span class="p">,</span> <span class="s">&#34;FEBRUARY&#34;</span><span class="p">,</span> <span class="s">&#34;MARCH 1855&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">r</span> <span class="o">&lt;</span> <span class="m">4</span><span class="p">,</span> <span class="m">3.8</span><span class="p">,</span> <span class="n">r</span> <span class="o">+</span> <span class="m">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">`Cause of Death`</span> <span class="o">=</span> <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><br>We remove the legend, the axis labels and titles and add the custom annotation layer. In order to do this, we use <em>geom_textpath</em>, which makes it possible to curve the labels just like in the original. We also need to turn the labels on their head because otherwise their direction will be wrong later on.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p2</span> <span class="o">&lt;-</span> <span class="n">p1</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># because ggplot&#39;s geom_text will not be curved with coord_polar</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_textpath</span><span class="p">(</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">upright</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fontface</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Turn the letters upside down - </span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># otherwise they&#39;ll be upside down once we change coord</span>
+</span></span><span class="line"><span class="cl">    <span class="n">angle</span> <span class="o">=</span> <span class="m">180</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># remove all the clutter we don&#39;t need</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.ticks</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># the one black line she describes in the legend</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;segment&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">7.5</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">8.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2.66</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">2.66</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p2</span>
+</span></span></code></pre></div><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-11-1.png" width="480" />
+<p>Nightingale&rsquo;s original titles all contain text with different font sizes in the same line. This is difficult to do with R&rsquo;s internal functions (I think it might work using expressions), but trivial using <em>ggtext</em> and html. Finally, we add polar coordinates to the plot. This introduces a lot of whitespace because the margins are based on the original bars, which is extremely difficult to remove in ggplot directly. A slightly hacky solution is to export the finished plot and then crop all the whitespace on the sides using <em>knitr::plot_crop</em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># define the title in html because of the different text sizes</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot.title</span> <span class="o">&lt;-</span> <span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:21px;&#34;&gt;2.&lt;/span&gt; &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:21px;&#34;&gt;APRIL 1855 &lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:15px;&#34;&gt;TO&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:21px;&#34;&gt; MARCH 1856&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot1</span> <span class="o">&lt;-</span> <span class="n">p2</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># change to polar coordinates</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_polar</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="m">1.5</span><span class="o">*</span><span class="kc">pi</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>   <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># and add labels manually</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;richtext&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">8.5</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;Modern No. 20&#34;</span><span class="p">,</span> <span class="n">label.colour</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">plot.title</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">plot.margin</span> <span class="o">=</span> <span class="nf">margin</span><span class="p">(</span><span class="m">-150</span><span class="p">,</span> <span class="m">-250</span><span class="p">,</span> <span class="m">-70</span><span class="p">,</span> <span class="m">-250</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;plot1.jpg&#34;</span><span class="p">),</span> <span class="n">plot1</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">plot_crop</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;plot1.jpg&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><img src="../../../../../../../../img/scurvy/plot1.jpg" width="50%" />
 
-p2</code></pre>
-<p><img src="../../../blog/2022-04-01-of-scurvy-in-the-army/Index_files/figure-html/unnamed-chunk-10-1.png" width="480" /></p>
-<p>Nightingale’s original titles all contain text with different font sizes in the same line. This is difficult to do with R’s internal functions (I think it might work using expressions), but trivial using <em>ggtext</em> and html. Finally, we add polar coordinates to the plot. This introduces a lot of whitespace because the margins are based on the original bars, which is extremely difficult to remove in ggplot directly. A slightly hacky solution is to export the finished plot and then crop all the whitespace on the sides using <em>knitr::plot_crop</em>.</p>
-<pre class="r"><code># define the title in html because of the different text sizes
-plot.title &lt;- &#39;
-  &lt;span style=&quot;font-size:21px;&quot;&gt;2.&lt;/span&gt; &lt;br&gt;
-  &lt;span style=&quot;font-size:21px;&quot;&gt;APRIL 1855 &lt;/span&gt; 
-  &lt;span style=&quot;font-size:15px;&quot;&gt;TO&lt;/span&gt; 
-  &lt;span style=&quot;font-size:21px;&quot;&gt; MARCH 1856&lt;/span&gt; 
-&#39;
+<h2 id="2-april-1855-to-march-1856" class="anchor-link"><a href="#2-april-1855-to-march-1856">2 April 1855 to March 1856</a></h2>
+<p>The second plot can be done in much the same way, with one relatively big difference: Here the order in which the colors are layered isn&rsquo;t determined by the category of cause of death, but rather by the number of deaths in each category.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">scurvy2</span> <span class="o">&lt;-</span> <span class="n">scurvy</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">Year</span> <span class="o">==</span> <span class="m">1856</span> <span class="o">|</span> <span class="n">Year</span> <span class="o">==</span> <span class="m">1855</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">Month</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;January&#34;</span><span class="p">,</span> <span class="s">&#34;February&#34;</span><span class="p">,</span> <span class="s">&#34;March&#34;</span><span class="p">)))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="n">Year</span><span class="p">,</span> <span class="n">Month</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">tmp</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span> <span class="n">each</span> <span class="o">=</span> <span class="m">3</span><span class="p">)))</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">scurvy2a</span> <span class="o">&lt;-</span> <span class="n">scurvy2</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">scurvy2b</span> <span class="o">&lt;-</span> <span class="n">scurvy2</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="nf">max</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">r</span> <span class="o">!=</span> <span class="nf">min</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">scurvy2c</span> <span class="o">&lt;-</span> <span class="n">scurvy2</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="nf">min</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Labels - note here that the figure is much smaller, </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># but the text doesn&#39;t scale down the same way</span>
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">&lt;-</span> <span class="n">scurvy2a</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;APRIL 1855&#34;</span><span class="p">,</span> <span class="s">&#34;MAY&#34;</span><span class="p">,</span> <span class="s">&#34;JUNE&#34;</span><span class="p">,</span> <span class="s">&#34;JULY&#34;</span><span class="p">,</span> <span class="s">&#34;AUGUST&#34;</span><span class="p">,</span> <span class="s">&#34;SEPTEMBER&#34;</span><span class="p">,</span> <span class="s">&#34;OCTOBER&#34;</span><span class="p">,</span> <span class="s">&#34;NOVEMBER&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;DECEMBER&#34;</span><span class="p">,</span> <span class="s">&#34;JANUARY\n1856&#34;</span><span class="p">,</span> <span class="s">&#34;FEBRUARY&#34;</span><span class="p">,</span> <span class="s">&#34;MARCH&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">r</span> <span class="o">&lt;</span> <span class="m">5</span><span class="p">,</span> <span class="m">5.2</span><span class="p">,</span> <span class="n">r</span> <span class="o">+</span> <span class="m">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">`Cause of Death`</span> <span class="o">=</span> <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot.title</span> <span class="o">&lt;-</span> <span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:20px;&#34;&gt;2.&lt;/span&gt; &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:20px;&#34;&gt;APRIL 1855 &lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:14px;&#34;&gt;TO&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:20px;&#34;&gt; MARCH 1856&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Put the figure together</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot2</span> <span class="o">&lt;-</span> <span class="n">scurvy2</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy2a</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy2b</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_bar_pattern</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">scurvy2c</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">aes</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">,</span> <span class="n">pattern_filename</span> <span class="o">=</span> <span class="n">`Cause of Death`</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;image&#34;</span><span class="p">,</span>    <span class="c1"># rather than color we use pattern from image</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pattern_type</span> <span class="o">=</span> <span class="s">&#34;tile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="m">1</span>    <span class="c1"># to remove space between bars</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_pattern_filename_manual</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Zymotic Diseases&#34;</span> <span class="o">=</span> <span class="s">&#34;color_zymotic.jpg&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Wounds and Injuries&#34;</span> <span class="o">=</span> <span class="s">&#34;color_death.jpg&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;All other Causes&#34;</span> <span class="o">=</span> <span class="s">&#34;color_other.jpg&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>  <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_color_manual</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Zymotic Diseases&#34;</span> <span class="o">=</span> <span class="s">&#34;#42514f&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Wounds and Injuries&#34;</span> <span class="o">=</span> <span class="s">&#34;#ae7e79&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;All other Causes&#34;</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_textpath</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">upright</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fontface</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Turn the letters upside down - otherwise they&#39;ll point in the wrong </span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># direction once we change coord</span>
+</span></span><span class="line"><span class="cl">    <span class="n">angle</span> <span class="o">=</span> <span class="m">180</span><span class="p">,</span>    
+</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">9.75</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axis.ticks</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plot.margin</span> <span class="o">=</span> <span class="nf">margin</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">-100</span><span class="p">,</span> <span class="m">-100</span><span class="p">,</span> <span class="m">-100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_polar</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="m">1.5</span><span class="o">*</span><span class="kc">pi</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>  <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;richtext&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">9</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;Modern No. 20&#34;</span><span class="p">,</span> <span class="n">label.colour</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">plot.title</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;plot2.jpg&#34;</span><span class="p">),</span> <span class="n">plot2</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">plot_crop</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;plot2.jpg&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><img src="../../../../../../../../img/scurvy/plot2.jpg" width="50%" />
 
-plot1 &lt;- p2 + 
-  # change to polar coordinates
-  coord_polar(start = 1.5*pi, direction = 1)   +
-  # and add labels manually
-  annotate(
-    geom = &quot;richtext&quot;, 
-    x = 4, y = 8.5, vjust = 0, 
-    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
-    label = plot.title
-    ) +
-  theme(plot.margin = margin(-150, -250, -70, -250))
+<h2 id="the-legend" class="anchor-link"><a href="#the-legend">The Legend</a></h2>
+<p>In order to define the legend we again use <em>ggtext::geom_richtext</em>, which allows us to write in html. This makes it much easier to use multiple lines and special formatting, like superscript in this case. It was difficult to find a font that was similar to Nightingale&rsquo;s handwriting, so I picked <em>Lucida Calligraphy</em>, which seemed like the best bet &ndash; still a far way off.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lbl</span> <span class="o">&lt;-</span> <span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">&lt;span style=&#34;font-size:13px;&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  The Areas of the blue, red, &amp; black wedges are each measured from
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  the centre of the common vertex.
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  The blue wedges measured from the centre of the circle represent area
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  for area the deaths from Preventible or Mitigable Zymotic diseases; the
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  red wedges measured from the centre the deaths from wounds; &amp; the
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  black wedges measured from the centre the deaths from all other causes.
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  The black line across the red triangle in Nov.&lt;sup&gt;r&lt;/sup&gt; 1854 marks the boundary
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  of the deaths from all other causes during the month.
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  In October 1854, &amp; April 1855; the black area coincides with the red;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;in January &amp; February 1856, the blue coincides with the black.
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  The entire areas may be compared by following the blue, the red &amp; the
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:13px;color:white&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">    emp
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">  black lines enclosing them.
+</span></span></span><span class="line"><span class="cl"><span class="s">&lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">leg</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_void</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">105</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">75</span><span class="p">,</span><span class="m">125</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;richtext&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">label.color</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="c1"># remove background and outline</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label.padding</span> <span class="o">=</span> <span class="n">grid</span><span class="o">::</span><span class="nf">unit</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="s">&#34;pt&#34;</span><span class="p">),</span> <span class="c1"># remove padding</span>
+</span></span><span class="line"><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;Lucida Calligraphy&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">lbl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lineheight</span> <span class="o">=</span> <span class="m">1.4</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;legend.jpg&#34;</span><span class="p">),</span> <span class="n">leg</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">plot_crop</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;legend.jpg&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><img src="../../../../../../../../img/scurvy/legend.jpg" width="70%" />
 
-ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;plot1.jpg&quot;), plot1, width = 12, height = 12)
-knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;plot1.jpg&quot;))</code></pre>
-<p><img src="../../../img/scurvy/plot1.jpg" style="width:70.0%" /></p>
-</div>
-<div id="april-1855-to-march-1856" class="section level2">
-<h2>2 April 1855 to March 1856</h2>
-<p>The second plot can be done in much the same way, with one relatively big difference: Here the order in which the colors are layered isn’t determined by the category of cause of death, but rather by the number of deaths in each category.</p>
-<pre class="r"><code>scurvy2 &lt;- scurvy %&gt;%
-  filter(Year == 1856 | Year == 1855 &amp; !(Month %in% c(&quot;January&quot;, &quot;February&quot;, &quot;March&quot;))) %&gt;%
-  arrange(Year, Month) %&gt;%
-  mutate(tmp = as.factor(rep(1:12, each = 3))) 
+<h2 id="the-titles" class="anchor-link"><a href="#the-titles">The Title(s)</a></h2>
+<p>The main title and subtitle of the plot are defined in the same way, using <em>geom_richtext</em>. Notably this would have been very difficult to do in ggplot if we didn&rsquo;t have the ability to use html because of the different font sizes. Similar to above, I couldn&rsquo;t find a font that was similar enough to Nightingale&rsquo;s handwriting.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">plot.title</span> <span class="o">&lt;-</span> <span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:28px;&#34;&gt;DIAGRAM &lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:20px;&#34;&gt;OF THE&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:28px;&#34;&gt; CAUSES &lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:20px;&#34;&gt;OF&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:28px;&#34;&gt; MORTALITY&lt;/span&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot.subtitle</span> <span class="o">&lt;-</span> <span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:16px;&#34;&gt;IN THE&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:22px;&#34;&gt; ARMY &lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:16px;&#34;&gt;IN THE&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">  &lt;span style=&#34;font-size:22px;&#34;&gt; EAST.&lt;/span&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">titles</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_void</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">97</span><span class="p">,</span><span class="m">100</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;richtext&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">99</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;Modern No. 20&#34;</span><span class="p">,</span> <span class="n">label.colour</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">plot.title</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;richtext&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">98.3</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">label.colour</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">plot.subtitle</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;segment&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">44</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">98</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">56</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">97.97</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;segment&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">43</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">97.9</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">57</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">97.9</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;titles.jpg&#34;</span><span class="p">),</span> <span class="n">titles</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="nf">plot_crop</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;titles.jpg&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><img src="../../../../../../../../img/scurvy/titles.jpg" width="70%" />
 
-scurvy2a &lt;- scurvy2 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(r == max(r)) %&gt;% 
-  ungroup()
-scurvy2b &lt;- scurvy2 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(r != max(r) &amp; r != min(r) &amp; r &gt; 0) %&gt;% 
-  ungroup()
-scurvy2c &lt;- scurvy2 %&gt;%
-  group_by(tmp) %&gt;%
-  filter(r == min(r) &amp; r &gt; 0) %&gt;% 
-  ungroup()
-
-# Labels - note here that the figure is much smaller, 
-# but the text doesn&#39;t scale down the same way
-labels &lt;- scurvy2a %&gt;%
-  mutate(
-    label = c(
-      &quot;APRIL 1855&quot;, &quot;MAY&quot;, &quot;JUNE&quot;, &quot;JULY&quot;, &quot;AUGUST&quot;, &quot;SEPTEMBER&quot;, &quot;OCTOBER&quot;, &quot;NOVEMBER&quot;, 
-      &quot;DECEMBER&quot;, &quot;JANUARY\n1856&quot;, &quot;FEBRUARY&quot;, &quot;MARCH&quot;
-      ),
-    y = if_else(
-      r &lt; 5, 5.2, r + 0.5
-    ),
-    `Cause of Death` = NA
-  )
-
-plot.title &lt;- &#39;
-  &lt;span style=&quot;font-size:20px;&quot;&gt;2.&lt;/span&gt; &lt;br&gt;
-  &lt;span style=&quot;font-size:20px;&quot;&gt;APRIL 1855 &lt;/span&gt; 
-  &lt;span style=&quot;font-size:14px;&quot;&gt;TO&lt;/span&gt; 
-  &lt;span style=&quot;font-size:20px;&quot;&gt; MARCH 1856&lt;/span&gt; 
-&#39;
-
-
-# Put the figure together
-plot2 &lt;- scurvy2 %&gt;% 
-  ggplot(aes(tmp, r)) + 
-    geom_bar_pattern(
-      data = scurvy2a,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;,  
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1    # to remove space between bars
-      ) + 
-    geom_bar_pattern(
-      data = scurvy2b,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;,  
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1    # to remove space between bars
-      ) + 
-    geom_bar_pattern(
-      data = scurvy2c,
-      aes(tmp, r, color = `Cause of Death`, pattern_filename = `Cause of Death`),
-      stat = &quot;identity&quot;, 
-      position = &quot;identity&quot;, 
-      alpha = 0.7,
-      pattern = &quot;image&quot;,    # rather than color we use pattern from image
-      pattern_type = &quot;tile&quot;,
-      width = 1    # to remove space between bars
-      ) +
-  scale_pattern_filename_manual(
-    values = c(
-      &quot;Zymotic Diseases&quot; = &quot;color_zymotic.jpg&quot;, 
-      &quot;Wounds and Injuries&quot; = &quot;color_death.jpg&quot;, 
-      &quot;All other Causes&quot; = &quot;color_other.jpg&quot;)
-    )  +
-  scale_color_manual(
-    values = c(
-      &quot;Zymotic Diseases&quot; = &quot;#42514f&quot;, 
-      &quot;Wounds and Injuries&quot; = &quot;#ae7e79&quot;, 
-      &quot;All other Causes&quot; = &quot;black&quot;)
-    ) +
-  geom_textpath(
-    mapping = aes(x = tmp, y = y, label = label), 
-    data = labels, 
-    color = &quot;black&quot;,
-    upright = FALSE,
-    fontface = &quot;bold&quot;,
-    # Turn the letters upside down - otherwise they&#39;ll point in the wrong 
-    # direction once we change coord
-    angle = 180,    
-    size = 3
-    ) +
-  scale_y_continuous(limits = c(0, 9.75)) +
-  theme(
-    axis.title = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    legend.position = &quot;none&quot;,
-    panel.background = element_blank(),
-    plot.margin = margin(0, -100, -100, -100)
-  ) + 
-  coord_polar(start = 1.5*pi, direction = 1)  +
-  annotate(
-    geom = &quot;richtext&quot;, 
-    x = 3, y = 9, vjust = 0, 
-    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
-    label = plot.title
-    ) 
-
-ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;plot2.jpg&quot;), plot2, width = 6, height = 6)
-knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;plot2.jpg&quot;))</code></pre>
-<p><img src="../../../img/scurvy/plot2.jpg" style="width:50.0%" /></p>
-</div>
-<div id="the-legend" class="section level2">
-<h2>The Legend</h2>
-<p>In order to define the legend we again use <em>ggtext::geom_richtext</em>, which allows us to write in html. This makes it much easier to use multiple lines and special formatting, like superscript in this case. It was difficult to find a font that was similar to Nightingale’s handwriting, so I picked <em>Lucida Calligraphy</em>, which seemed like the best bet – still a far way off.</p>
-<pre class="r"><code>lbl &lt;- &#39;
-&lt;span style=&quot;font-size:13px;&quot;&gt;
-  The Areas of the blue, red, &amp; black wedges are each measured from
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  the centre of the common vertex.
-  &lt;br&gt;
-  The blue wedges measured from the centre of the circle represent area
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  for area the deaths from Preventible or Mitigable Zymotic diseases; the
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  red wedges measured from the centre the deaths from wounds; &amp; the
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  black wedges measured from the centre the deaths from all other causes.
-  &lt;br&gt;
-  The black line across the red triangle in Nov.&lt;sup&gt;r&lt;/sup&gt; 1854 marks the boundary
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  of the deaths from all other causes during the month.
-  &lt;br&gt;
-  In October 1854, &amp; April 1855; the black area coincides with the red;
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;in January &amp; February 1856, the blue coincides with the black.
-  &lt;br&gt;
-  The entire areas may be compared by following the blue, the red &amp; the
-  &lt;br&gt;
-  &lt;span style=&quot;font-size:13px;color:white&quot;&gt;
-    emp
-  &lt;/span&gt;
-  black lines enclosing them.
-&lt;/span&gt;
-&#39;
-
-leg &lt;- ggplot() +
-  theme_void() +
-  scale_x_continuous(limits = c(0,105)) +
-  scale_y_continuous(limits = c(75,125)) +
-  annotate(
-    geom = &quot;richtext&quot;, 
-    x = 0, y = 100, vjust = 0.5, hjust = 0,
-    fill = NA, label.color = NA, # remove background and outline
-    label.padding = grid::unit(rep(0, 4), &quot;pt&quot;), # remove padding
-    family = &quot;Lucida Calligraphy&quot;, 
-    label = lbl,
-    lineheight = 1.4
-    ) +
-  coord_fixed(1) 
-
-ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;legend.jpg&quot;), leg, width = 6, height = 5, bg = &quot;white&quot;)
-knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;legend.jpg&quot;))</code></pre>
-<p><img src="../../../img/scurvy/legend.jpg" style="width:70.0%" /></p>
-</div>
-<div id="the-titles" class="section level2">
-<h2>The Title(s)</h2>
-<p>The main title and subtitle of the plot are defined in the same way, using <em>geom_richtext</em>. Notably this would have been very difficult to do in ggplot if we didn’t have the ability to use html because of the different font sizes. Similar to above, I couldn’t find a font that was similar enough to Nightingale’s handwriting.</p>
-<pre class="r"><code>plot.title &lt;- &#39;
-  &lt;span style=&quot;font-size:28px;&quot;&gt;DIAGRAM &lt;/span&gt; 
-  &lt;span style=&quot;font-size:20px;&quot;&gt;OF THE&lt;/span&gt; 
-  &lt;span style=&quot;font-size:28px;&quot;&gt; CAUSES &lt;/span&gt; 
-  &lt;span style=&quot;font-size:20px;&quot;&gt;OF&lt;/span&gt; 
-  &lt;span style=&quot;font-size:28px;&quot;&gt; MORTALITY&lt;/span&gt;
-&#39;
-
-plot.subtitle &lt;- &#39;
-  &lt;span style=&quot;font-size:16px;&quot;&gt;IN THE&lt;/span&gt; 
-  &lt;span style=&quot;font-size:22px;&quot;&gt; ARMY &lt;/span&gt; 
-  &lt;span style=&quot;font-size:16px;&quot;&gt;IN THE&lt;/span&gt; 
-  &lt;span style=&quot;font-size:22px;&quot;&gt; EAST.&lt;/span&gt; 
-&#39;
-
-titles &lt;- ggplot() +
-  theme_void() +
-  scale_x_continuous(limits = c(0,100)) +
-  scale_y_continuous(limits = c(97,100)) +
-  annotate(
-    geom = &quot;richtext&quot;, 
-    x = 50, y = 99, vjust = 0, 
-    family = &quot;Modern No. 20&quot;, label.colour = &quot;white&quot;,
-    label = plot.title
-    ) +
-  annotate(
-    geom = &quot;richtext&quot;, 
-    x = 50, y = 98.3, vjust = 0, 
-    label.colour = &quot;white&quot;,
-    label = plot.subtitle
-    ) +
-  annotate(geom = &quot;segment&quot;, x = 44, y = 98, xend = 56, yend = 97.97) +
-  annotate(geom = &quot;segment&quot;, x = 43, y = 97.9, xend = 57, yend = 97.9)
-
-ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;titles.jpg&quot;), titles, width = 12, height = 1, bg = &quot;white&quot;)
-knitr::plot_crop(here::here(&quot;static/img/scurvy&quot;, &quot;titles.jpg&quot;))</code></pre>
-<p><img src="../../../img/scurvy/titles.jpg" style="width:70.0%" /></p>
-</div>
-<div id="putting-it-all-together" class="section level2">
-<h2>Putting it all together</h2>
+<h2 id="putting-it-all-together" class="anchor-link"><a href="#putting-it-all-together">Putting it all together</a></h2>
 <p>Because each of the four different elements was already saved as a .jpg file and cropped, it is relatively easy to put together using <em>cowplot</em>. We simply read in each picture, then arrange them on an empty ggplot, remove the background and add the dashed annotation line.</p>
-<pre class="r"><code>plot1 &lt;- readJPEG(&quot;plot1.jpg&quot;, native = TRUE)
-plot2 &lt;- readJPEG(&quot;plot2.jpg&quot;, native = TRUE)
-lbl &lt;- readJPEG(&quot;legend.jpg&quot;, native = TRUE)
-titles &lt;- readJPEG(&quot;titles.jpg&quot;, native = TRUE)
-
-rose &lt;- ggplot() +
-  scale_x_continuous(limits = c(0, 300)) +
-  scale_y_continuous(limits = c(0, 210)) +
-  draw_image(
-    image = plot2, x = 0, y = 100, width = 100, height = 100
-    ) +
-  draw_image(
-    image = lbl, x = 2.5, y = 2.5, width = 150, height = 80
-    ) +
-  draw_image(
-    image = plot1, x = 150, y = 2.5, width = 150, height = 199
-    ) +
-  draw_image(
-    image = titles, x = 150, y = 200, width = 150, 
-    height = 15, hjust = 0.5, vjust = 0.5
-    ) +
-  annotate(
-    geom = &quot;segment&quot;, x = 165, xend = 89, y = 119.5, yend = 100, 
-    linetype = &quot;dashed&quot;, size = 0.5
-    ) +
-  annotate(
-    geom = &quot;segment&quot;, x = 88.5, xend = 20.5, y = 100, yend = 136.5, 
-    linetype = &quot;dashed&quot;, size = 0.5
-    ) +
-  theme_void() +
-  theme(
-    panel.background = element_rect(fill = &quot;white&quot;)
-  )
-
-ggsave(here::here(&quot;static/img/scurvy&quot;, &quot;rose.jpg&quot;), rose, width = 16, height = 10.5, bg = &quot;white&quot;)</code></pre>
-<p><br>Et voila! My version of the rose:</p>
-<p><img src="../../../img/scurvy/rose2.jpg" style="width:100.0%" /></p>
-</div>
-</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">plot1</span> <span class="o">&lt;-</span> <span class="nf">readJPEG</span><span class="p">(</span><span class="s">&#34;plot1.jpg&#34;</span><span class="p">,</span> <span class="n">native</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot2</span> <span class="o">&lt;-</span> <span class="nf">readJPEG</span><span class="p">(</span><span class="s">&#34;plot2.jpg&#34;</span><span class="p">,</span> <span class="n">native</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">lbl</span> <span class="o">&lt;-</span> <span class="nf">readJPEG</span><span class="p">(</span><span class="s">&#34;legend.jpg&#34;</span><span class="p">,</span> <span class="n">native</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">titles</span> <span class="o">&lt;-</span> <span class="nf">readJPEG</span><span class="p">(</span><span class="s">&#34;titles.jpg&#34;</span><span class="p">,</span> <span class="n">native</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rose</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">300</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">210</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">draw_image</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span> <span class="o">=</span> <span class="n">plot2</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">draw_image</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span> <span class="o">=</span> <span class="n">lbl</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">150</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">80</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">draw_image</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span> <span class="o">=</span> <span class="n">plot1</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">150</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">150</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">199</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">draw_image</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span> <span class="o">=</span> <span class="n">titles</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">150</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">150</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">height</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;segment&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">163.5</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">89</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">122</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">linetype</span> <span class="o">=</span> <span class="s">&#34;dashed&#34;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;segment&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="m">88.5</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">20.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">136</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">linetype</span> <span class="o">=</span> <span class="s">&#34;dashed&#34;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_void</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#34;static/img/scurvy&#34;</span><span class="p">,</span> <span class="s">&#34;rose.jpg&#34;</span><span class="p">),</span> <span class="n">rose</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">10.5</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><br>Et voila! My version of the rose:</p>
+<img src="../../../../../../../../img/scurvy/rose2.jpg" width="100%" />
 
     
     

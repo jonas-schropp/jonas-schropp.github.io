@@ -60,6 +60,10 @@ h3, h4, h5, h6 {
   background: -webkit-linear-gradient(to left, #fffefd, #f6f0ea);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #fffefd, #f6f0ea);
+  padding-top: 3rem;
+  padding-right: 0rem;
+  padding-bottom: 3rem;
+  padding-left: 0rem;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 .section .title {
@@ -93,8 +97,29 @@ img {
   border: 1px solid #AD957F;
 }
 
-code {
-  color: #2c3b3b; }
+/* code {
+  color: #2c3b3b; }*/
+  
+/* TEST */
+  
+/*pre code.hljs{
+  display:block;
+  overflow-x:auto;
+  padding:1em
+}
+code.hljs{
+  padding:3px 5px
+}/*!
+  Theme: GitHub Dark Dimmed
+  Description: Dark dimmed theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Colors taken from GitHub's CSS
+*//*.hljs{color:#adbac7;background:#22272e}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#f47067}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#dcbdfb}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#6cb6ff}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#96d0ff}.hljs-built_in,.hljs-symbol{color:#f69d50}.hljs-code,.hljs-comment,.hljs-formula{color:#768390}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#8ddb8c}.hljs-subst{color:#adbac7}.hljs-section{color:#316dca;font-weight:700}.hljs-bullet{color:#eac55f}.hljs-emphasis{color:#adbac7;font-style:italic}.hljs-strong{color:#adbac7;font-weight:700}.hljs-addition{color:#b4f1b4;background-color:#1b4721}.hljs-deletion{color:#ffd8d3;background-color:#78191b}*/
+
+/* TEST */
 
 hr {
     background-color: #4E6769;
@@ -163,7 +188,7 @@ a.navbar-item {
   font-family: #2c3b3b;
 }
 
-code {
+/* code {
   background-color: #2C3B3Bcc;
   color: #f6f0ea; 
 }
@@ -171,7 +196,7 @@ code {
 pre {
   background-color: #2C3B3Bcc;
   color: #f6f0ea;
-}
+}*/
 
 .card {
   background-color: #f6f0ea; 
