@@ -5,7 +5,17 @@
     <link>/tags/r/</link>
     <description>Recent content in R on Jonas Schropp</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>admintools</title>
+      <link>/blog/2022-06-13-admintools/</link>
+      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2022-06-13-admintools/</guid>
+      <description>When I started freelancing, I quickly realized that administration and project management eat into your time like nothing else. Many days I would spend more than half my working time on tasks that did not generate any income &amp;ndash; answering emails, managing appointments, recording when I worked for how long on what and writing invoices.
+Over time I went from filling every invoice and time sheet by hand in word, via paying for an overpriced online time tracking and invoicing tool to using a custom R package for administration.</description>
+    </item>
+    
     <item>
       <title>Of Scurvy in the Army</title>
       <link>/blog/2022-04-01-of-scurvy-in-the-army/index/</link>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        
+            <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+Admintools - Jonas Schropp
+</title>
+
+
+
+            <meta property="og:title" content="admintools - Jonas Schropp" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content=""/>
+<meta property="og:url" content="/blog/2022-06-13-admintools/"/>
+<meta property="og:site_name" content="Jonas Schropp"/>
+
+
+
+<meta property="og:image" content="/blog/2022-06-13-admintools/index/thumb.png"/>
+
+<meta property="og:image" content="/blog/2022-06-13-admintools/index_files/figure-html/unnamed-chunk-6-1.png"/>
+
+<meta property="og:image" content="/blog/2022-06-13-admintools/thumb.png"/>
+
+
+
+            
+<link rel="shortcut icon" href="../../img/fav.ico.png">
+
+
+            
+
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.min.9be191ad8f911b41ea78d24eeb41bac3c819932c75b8ceb4d91313cfb74e6c73.css" integrity="sha256-m&#43;GRrY&#43;RG0HqeNJO60G6w8gZkyx1uM602RMTz7dObHM=" crossorigin="anonymous" media="screen">
+
+
+
+
+    <link rel="stylesheet" href="../../css/syntax.css" integrity="" crossorigin="anonymous" media="screen">
+    <link rel="stylesheet" href="../../css/custom-style.css" integrity="" crossorigin="anonymous" media="screen">
+        
+        
+        
+        
+    </head>
+    <body> 
+        <section id="top" class="section">
+            
+            <div class="container hero  fade-in one " style="background-image: url(/img/logo2.png);">
+                
+                
+
+
+
+
+            </div>
+            
+            <div class="section  fade-in two ">
+                
+<div class="container">
+    <hr>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu " id="navMenu">
+            
+            
+                
+                    
+                        <a class="navbar-item" href="../../">
+                            
+                            Home
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="../../about">
+                            
+                            About
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="../../hire-me">
+                            
+                            Hire Me!
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="../../blog">
+                            
+                            Projects &amp; Ideas
+                            
+                        </a>
+                    
+                
+                    
+                        <a class="navbar-item" href="../../#contact">
+                            
+                            Contact
+                            
+                        </a>
+                    
+                
+            
+        </div>
+    </nav>
+    <hr>
+</div>
+
+
+
+                
+
+<link rel="stylesheet" href="../../css/atom-one-dark.min.css" rel="stylesheet" id="theme-stylesheet"> 
+<script src="../../js/highlight.js"></script>
+<script>hljs.highlightAll();</script>
+
+<div class="container">
+    <h2 class="title is-1 top-pad strong-post-title">
+        <a href="../../blog/2022-06-13-admintools/">admintools</a>
+    </h2>
+    
+    <h2 class="subtitle"> 
+        <a href="../../blog/2022-06-13-admintools/">Some thoughts on managing invoices &amp; timesheets with R Markdown</a>
+    </h2>
+    <div class="post-data">
+        Jun 13, 2022 |
+        8 minutes read
+    </div>
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+      
+     <p>
+         Tags: 
+          
+           <a href="../../tags/r">
+             R</a>,
+         
+           <a href="../../tags/r-markdown">
+             R Markdown</a>,
+         
+           <a href="../../tags/r-packages">
+             R packages</a>
+         
+        </p>
+      
+    
+      
+    
+</div>
+
+<div class="container markdown top-pad">
+    <p>When I started freelancing, I quickly realized that administration and project management eat into your time like nothing else. Many days I would spend more than half my working time on tasks that did not generate any income &ndash; answering emails, managing appointments, recording when I worked for how long on what and writing invoices.</p>
+<p>Over time I went from filling every invoice and time sheet by hand in word, via paying for an overpriced online time tracking and invoicing tool to using a custom R package for administration.</p>
+
+<h1 id="the-general-setup" class="anchor-link"><a href="#the-general-setup">The general setup</a></h1>
+<p>In order to generate invoices and track my time spent on projects and tasks I need several data sets:</p>
+<ul>
+<li>a data set containing <strong>names and addresses</strong> of clients, perhaps with additional information such as reference numbers etc. For simplicity, this also contains my address and VAT number.</li>
+<li>a data set containing the hours I worked on each specific task and project for each client in detail.</li>
+</ul>
+<p>Both of these are simply excel files somewhere on my drive. I don&rsquo;t add clients often enough that an automated solution would save me time, but I have switch between clients and tasks often enough during a day that I need to closely keep track if I don&rsquo;t want to forget what I did.</p>
+<p>In order to create the invoices, I also need a template. In this case I&rsquo;m using <code>R Markdown</code> with <code>LaTex</code>, because I want to render my invoices in pdf. You could of course also use html, no one is stopping you. This template needs to be fairly general, because I have clients from multiple countries (so need to pay attention to tax issues), some of them organizations and some individuals.</p>
+<p>Information is passed to the template through a bunch of R functions that select and aggregate the data from my client list and time sheet. All of these features are conveniently served with an R package that lives in a private git repository.</p>
+
+<h1 id="admintools-the-example-package" class="anchor-link"><a href="#admintools-the-example-package">admintools: the example package</a></h1>
+<p>I published an example of how such a package could look on my GitHub and called it <a href="https://github.com/jonas-schropp/admintools">admintools</a>. The package is designed <strong>only as an example</strong>, and is not the actual package I use. It is a bit more general, which unfortunately comes at the cost of requiring a couple more arguments to the functions. It is therefore less easy to use than a package that is tailored to your own needs, and I encourage everyone to use it as a starting point for their own package.</p>
+<p>In any case, you can install it via <code>devtools</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&#34;jonas-schropp/admintools&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>And then load it like any other library</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">admintools</span><span class="p">)</span>
+</span></span></code></pre></div><p><code>admintools</code> comes with two synthetic data sets to illustrate usage and to make starting out and testing easier: <code>addresses</code> and <code>timesheets</code>. <code>addresses</code> is a data.frame containing contact information for several hypothetical clients. For simplicity it also contains the “sender” address in the first line in order to facilitate creating the header for invoices.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="n">addresses</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## &#39;data.frame&#39;:	10 obs. of  13 variables:
+##  $ Client      : chr  &#34;talynsight&#34; &#34;Client A&#34; &#34;Client B&#34; &#34;Client C&#34; ...
+##  $ street      : chr  &#34;Sepapaja tn 6&#34; &#34;23 Random Street&#34; &#34;84 Some Street&#34; &#34;8 Avenue&#34; ...
+##  $ city        : chr  &#34;Tallinn&#34; &#34;San Francisco&#34; &#34;Los Angeles&#34; &#34;New York&#34; ...
+##  $ zip_code    : chr  &#34;11415&#34; &#34;CA 94131&#34; &#34;CA 90027&#34; &#34;NY 10002&#34; ...
+##  $ country     : chr  &#34;Estonia&#34; &#34;USA&#34; &#34;USA&#34; &#34;USA&#34; ...
+##  $ email       : chr  &#34;jonas.schropp@protonmail.com&#34; &#34;email@clienta.com&#34; &#34;email@clientb.com&#34; &#34;email@clientc.com&#34; ...
+##  $ phone       : chr  NA &#34;+1(0)12345678&#34; &#34;+1(0)12345678&#34; &#34;+1(0)12345678&#34; ...
+##  $ vat_id      : chr  &#34;EE102496143&#34; &#34;12345678&#34; &#34;12345678&#34; &#34;12345678&#34; ...
+##  $ organization: chr  &#34;talynsight OÜ&#34; &#34;Client A Ltd&#34; &#34;Client B University&#34; &#34;Client C Ltd&#34; ...
+##  $ ref         : chr  &#34;Jonas Schropp&#34; NA &#34;Albert Einstein&#34; &#34;Bill Gates&#34; ...
+##  $ ref_code    : chr  NA NA &#34;B-123&#34; &#34;44E&#34; ...
+##  $ ref_email   : chr  &#34;jonas.schropp@protonmail.com&#34; NA &#34;albi@email.com&#34; &#34;billyboy@microsoft.com&#34; ...
+##  $ VAT         : chr  &#34;Reverse Charge&#34; &#34;Reverse Charge&#34; &#34;Reverse Charge&#34; &#34;Reverse Charge&#34; ...
+</code></pre><p><code>timesheets</code> is an example how a time sheet to track work could look like.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="n">timesheet</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## &#39;data.frame&#39;:	80 obs. of  9 variables:
+##  $ Date        : Date, format: &#34;2022-01-07&#34; &#34;2022-01-08&#34; ...
+##  $ Client      : chr  &#34;Client B&#34; &#34;Client B&#34; &#34;Client B&#34; &#34;Client C&#34; ...
+##  $ Project     : chr  &#34;Project 1&#34; &#34;Project 3&#34; &#34;Project 2&#34; &#34;Project X&#34; ...
+##  $ With        : chr  &#34;PI 2&#34; &#34;PI 1&#34; &#34;PI 2&#34; NA ...
+##  $ Task        : chr  &#34;data analysis&#34; &#34;data analysis&#34; &#34;reporting&#34; &#34;meeting&#34; ...
+##  $ Description : chr  &#34;Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a \n    mirror and a ra&#34;| __truncated__ &#34; —Introibo ad altare Dei.&#34; &#34;Halted, he peered down the dark winding stairs and called out coarsely:&#34; &#34; —Come up, Kinch! Come up, you fearful jesuit!&#34; ...
+##  $ Hours       : int  4 5 8 9 6 7 5 9 8 9 ...
+##  $ Hourly      : num  90 90 90 120 90 120 90 120 120 120 ...
+##  $ Compensation: num  360 450 720 1080 540 840 450 1080 960 1080 ...
+</code></pre><p>The package has two main functions: comp_table and render_invoice.</p>
+<ul>
+<li><code>comp_table</code> is mostly a wrapper over several dplyr functions for aggregating and summarizing data that can be used to easily and quickly transform data from the time sheet into a format that is useful for reporting.</li>
+<li><code>render_invoice</code> renders an invoice in pdf format, using either the template supplied with this package or a template of your own. If you want to use your own template, try to work around the existing one and only change the styling of the output rather than the content - otherwise the code will likely break because <code>render_invoice</code> performs quite a lot of computation to transform the R output into <code>LaTeX</code> code even before passing it on to rmarkdown.</li>
+</ul>
+
+<h1 id="generating-reports" class="anchor-link"><a href="#generating-reports">Generating Reports</a></h1>
+<p><code>comp_table</code>, being a simple wrapper to aggregate and summarize the time sheet data, might seem somewhat superfluous. After all, you could just use <code>dplyr</code>, <code>data.table</code> or even <code>base</code>. So why <code>comp_table</code>? Mostly because in addition to aggregating the time sheet in whichever way you desire, it also provides a way to standardize the output and pass it on to <code>render_invoice</code> without all the clutter.</p>
+<p>Consequently it also has a long host of arguments, including some to tell it what the relevant columns in the data set are called. These would not be necessary in your own package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">comp_table</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">agg_by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Month&#34;</span><span class="p">,</span> <span class="s">&#34;Task&#34;</span><span class="p">,</span> <span class="s">&#34;Project&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">min_date</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">max_date</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">proj_name</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">client_name</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">available_comp</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">date</span> <span class="o">=</span> <span class="s">&#34;Date&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">hours</span> <span class="o">=</span> <span class="s">&#34;Hours&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">compensation</span> <span class="o">=</span> <span class="s">&#34;Compensation&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">project</span> <span class="o">=</span> <span class="s">&#34;Project&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">task</span> <span class="o">=</span> <span class="s">&#34;Task&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">client</span> <span class="o">=</span> <span class="s">&#34;Client&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>In any case, it can be used to prepare simple reports such as the one below:</p>
+<p align="center"><iframe src="../../img/admin/report.pdf" width="840" height="576" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe></p>
+<details>
+  <summary>Click here if you want to see the code</summary>
+    <p align="center"><iframe src="../../img/admin/report.Rmd" width="840" height="576" frameborder="1" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe></p>
+</details> 
+<p>Not very pretty, I know, but that&rsquo;s not the point. You can style it any way you like.</p>
+
+<h1 id="rendering-invoices" class="anchor-link"><a href="#rendering-invoices">Rendering Invoices</a></h1>
+<p><code>comp_table</code> makes it easy to pass the data to <code>render_invoice</code> in the right format. If you want to adapt the invoice to your needs, the arguments to <code>render_invoice</code> already provide a lot of options:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">render_invoice</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">client</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">proj_name</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">inv_number</span> <span class="o">=</span> <span class="m">10001</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">with</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">VAT</span> <span class="o">=</span> <span class="s">&#34;20%&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">currency</span> <span class="o">=</span> <span class="s">&#34;Euro&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">iban</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bic</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">swift</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bank</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">intro</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">timelimit</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">template</span> <span class="o">=</span> <span class="s">&#34;invoice-template&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">filename</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="nf">Sys.Date</span><span class="p">(),</span> <span class="s">&#34;-SENDER-RECIPIENT-NUMBER&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dir</span> <span class="o">=</span> <span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Some of these are entirely unnecessary if you use your own package instead of <code>admintools</code>, such as <code>iban</code>, <code>bic</code>, <code>swift</code>, <code>bank</code> and <code>timelimit</code>. These need to be set for obvious reasons, but if you&rsquo;re a single freelancer or manage a small agency, you likely don&rsquo;t use more than one business banking account and rely on defaults for your invoices in other areas too.</p>
+<p><code>render_invoice</code> does a lot of computation under the hood in order to format the data to pass it on to <code>R Markdown</code>. Most importantly, every table is already transformed to <code>LaTex</code> code <strong>before</strong> passing it on to the invoice template. The template is then only used for styling that output. I believe this separation of tasks between R and R Markdown makes it relatively easy to change the default template or pass on different parameters that I didn&rsquo;t anticipate in the package.</p>
+<p>Finally, rendering the invoice is trivial. We simply aggregate our time sheet however we want to present the work on the invoice:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">timesheet</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">comp_table</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client_name</span> <span class="o">=</span> <span class="s">&#34;Client B&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">proj_name</span> <span class="o">=</span> <span class="s">&#34;Project 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">agg_by</span> <span class="o">=</span> <span class="s">&#34;Month&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">min_date</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2022-01-01&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_date</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2022-04-30&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> 
+</span></span></code></pre></div><p>Select the sender and the receiver from the client data base:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">sender</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">addresses</span><span class="p">,</span> <span class="n">Client</span> <span class="o">==</span> <span class="s">&#34;talynsight&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">receiver</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">addresses</span><span class="p">,</span> <span class="n">Client</span> <span class="o">==</span> <span class="s">&#34;Client B&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>And pass the information to <code>render_invoice</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">render_invoice</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span> <span class="o">=</span> <span class="n">p1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">client</span> <span class="o">=</span> <span class="n">receiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">address</span> <span class="o">=</span> <span class="n">sender</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">proj_name</span> <span class="o">=</span> <span class="s">&#34;Project 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">inv_number</span> <span class="o">=</span> <span class="s">&#34;10098&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">iban</span> <span class="o">=</span> <span class="s">&#34;DE12345678&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bic</span> <span class="o">=</span> <span class="s">&#34;BLABLA01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bank</span> <span class="o">=</span> <span class="s">&#34;Parkbank&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">with</span> <span class="o">=</span> <span class="s">&#34;PI Jim Lahey, Trailer Park Supervisor,&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount</span> <span class="o">=</span> <span class="s">&#34;10%&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">VAT</span> <span class="o">=</span> <span class="s">&#34;Reverse Charge&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">filename</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="nf">Sys.Date</span><span class="p">(),</span> <span class="s">&#34;-talynsightOÜ-ClientB-10098.pdf&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Which will return the fully rendered pdf invoice:</p>
+<p align="center"><iframe src="../../img/admin/invoice.pdf" width="840" height="576" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe></p>
+<p>Much more customize-able than any (usually paid!) program I have found online. Now the question is: what else can I automate with R Markdown that might save me time and nerves? What do you use R Markdown for except ad hoc reports?</p>
+
+    
+    
+    <h3>Citation</h3>
+    <div class="columns">
+      <div class="column is-half">
+        For attribution, please cite this work as
+        <div class="highlight" style="border: 1px solid grey">
+          <p style="padding: 1em;font-family: 'monospace">
+            Jonas Schropp (Jun 13, 2022) admintools. Retrieved from /blog/2022-06-13-admintools/
+          </p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <b>BibTeX citation</b>
+        <div class="highlight" style="border: 1px solid grey">
+          <p style="padding: 1em;font-family: 'monospace">
+            @misc{ 2022-admintools,<br>
+            &emsp;author = { Jonas Schropp },<br>
+            &emsp;title = { admintools },<br>
+            &emsp;url = { /blog/2022-06-13-admintools/ },<br>
+            &emsp;year = { 2022 }<br>
+            &emsp;updated = { Jun 13, 2022 }<br> 
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="jonas-schropp/jonas-schropp.github.io"
+        data-repo-id="R_kgDOHL1FmA"
+        data-category="Comments"
+        data-category-id="DIC_kwDOHL1FmM4COnB6"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="/css/giscus.css"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+                
+                <div class="container">
+    <hr>
+</div>
+<div class="container has-text-centered top-pad">
+    <a href="#top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div class="container">
+    <hr>
+</div>
+
+                <div class="section" id="footer">
+    <div class="container has-text-centered">
+    
+        <span class="footer-text">
+            Jonas Schropp <i class="fab fa-creative-commons" aria-hidden="true"></i>-<i class="fab fa-creative-commons-by"></i>-<i class="fab fa-creative-commons-sa"></i>-2022. Theme adapted from <a href="https://github.com/Athanasiamo/hugo-chairome">hugo-chairome</a>. View source code on <a href="https://github.com/jonas-schropp/jonas-schropp.github.io"><i class="fab fa-github"></i></a>.
+        </span>
+    
+    </div>
+</div>
+
+                
+            </div>
+        </section>
+        
+        
+
+
+<script src="../../js/bundle.5c23c0437f001a469ca373a465a6f7487203d18e10cdff76d86a60af66d5ee28.js" integrity="sha256-XCPAQ38AGkaco3OkZab3SHID0Y4Qzf922Gpgr2bV7ig=" crossorigin="anonymous">></script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-115545202-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+
+  <script defer data-domain=jonas-schropp.github.io src="https://plausible.io/js/plausible.js"></script>
+
+
+
+
+
+
+
+<script src="../../js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+        
+        
+        
+        
+    </body>
+</html>
