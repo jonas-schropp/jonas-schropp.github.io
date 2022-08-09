@@ -51,5 +51,50 @@
       <description></description>
     </item>
     
+    <item>
+      <title>bertopic</title>
+      <link>/tags/bertopic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bertopic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>impeachtrump</title>
+      <link>/tags/impeachtrump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/impeachtrump/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reddit</title>
+      <link>/tags/reddit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/reddit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transformers</title>
+      <link>/tags/transformers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/transformers/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
