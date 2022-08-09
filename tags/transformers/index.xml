@@ -7,11 +7,12 @@
     <generator>Hugo -- gohugo.io</generator><atom:link href="/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hillary vs. the Donald</title>
-      <link>/blog/2022-08-09-hillary-vs-td/old-index/</link>
+      <link>/blog/2022-08-09-hillary-vs-td/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2022-08-09-hillary-vs-td/old-index/</guid>
-      <description>&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; window.PlotlyConfig = {MathJaxConfig: &#39;local&#39;}; if (window.MathJax &amp;amp;&amp;amp; window.MathJax.Hub &amp;amp;&amp;amp; window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: &amp;quot;STIX-Web&amp;quot;}});} if (typeof require !== &#39;undefined&#39;) { require.undef(&amp;quot;plotly&amp;quot;); requirejs.config({ paths: { &#39;plotly&#39;: [&#39;https://cdn.plot.ly/plotly-2.12.1.min&#39;] } }); require([&#39;plotly&#39;], function(Plotly) { window._Plotly = Plotly; }); } &amp;lt;/script&amp;gt; Intro In 2016 I was studying Psychology at the University of Innsbruck, and I had no idea where to go afterwards. I had just finished my Bachelor&amp;rsquo;s thesis knew one thing: I wasn&amp;rsquo;t made for clinical psychology.</description>
+      <guid>/blog/2022-08-09-hillary-vs-td/</guid>
+      <description>Intro In 2016 I was studying Psychology at the University of Innsbruck, and I had no idea where to go afterwards. I had just finished my Bachelor’s thesis knew one thing: I wasn’t made for clinical psychology. I didn’t really want to work with patients. But I also had discovered the research process, and I felt there might be a path forwards for me within science.
+What interested me most was how modern big data technologies could be applied to questions in Psychology.</description>
     </item>
     
   </channel>
